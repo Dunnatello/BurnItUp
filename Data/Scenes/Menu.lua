@@ -23,6 +23,8 @@ local composer = require( "composer" )
 
 local scene = composer.newScene( )
 
+local navMenuManager = require( "Data.Modules.UI.navMenuManager" ) -- FIXME: Add Modular Module Loading Code
+
 -- Tables
 local ui_Groups = { }
 local ui_Objects = { }
@@ -32,7 +34,17 @@ local ui_Objects = { }
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
 -- -----------------------------------------------------------------------------------
 
+local function buttonPress( event )
 
+	local button = event.target
+	
+	if ( button.myName == "leftActionButton" ) then
+	
+		ui_Objects[ "NavMenu" ]:setMenuVisibility( true )
+	
+	end
+	
+end
 
 
 -- -----------------------------------------------------------------------------------
@@ -67,32 +79,46 @@ function scene:create( event )
 	
 	-- Buttons
 	
-	-- Back Button
-	ui_Objects[ "Topbar" ].BackButton = { }
-	local backButton = ui_Objects[ "Topbar" ].BackButton
+	-- Left Action Button
+	ui_Objects[ "Topbar" ].leftActionButton = { }
+	local leftActionButton = ui_Objects[ "Topbar" ].leftActionButton
 	
-	backButton.Button = display.newCircle( ui_Groups[ 2 ], 60 * 1.5, display.topStatusBarContentHeight + 60, 60 )
-	backButton.Button:setFillColor( 8 / 255, 127 / 255, 35 / 255 )
+	-- Button Background
+	leftActionButton.Button = display.newCircle( ui_Groups[ 2 ], 60 * 1.5, display.topStatusBarContentHeight + 60, 60 )
+	leftActionButton.Button:setFillColor( 8 / 255, 127 / 255, 35 / 255 )
 	
-	backButton.Button.isVisible = false
-
-	backButton.Text = display.newText( { parent = ui_Groups[ 3 ], text = "arrow_back", x = backButton.Button.x, y = backButton.Button.y, font = "Data/Fonts/MaterialIcons-Regular.ttf", fontSize = 72 } )
-
-	-- Settings Button
-	ui_Objects[ "Topbar" ].SettingsButton = { }
-	local settingsButton = ui_Objects[ "Topbar" ].SettingsButton
+	leftActionButton.Button.alpha = 0.01
+	leftActionButton.Button.myName = "leftActionButton"
 	
-	settingsButton.Button = display.newCircle( ui_Groups[ 2 ], display.contentWidth - 60 * 1.5, display.topStatusBarContentHeight + 60, 60 )
-	settingsButton.Button:setFillColor( 8 / 255, 127 / 255, 35 / 255 )
+	leftActionButton.Button:addEventListener( "tap", buttonPress )
 	
-	settingsButton.Button.isVisible = false
-	
-	settingsButton.Text = display.newText( { parent = ui_Groups[ 3 ], text = "settings", x = settingsButton.Button.x, y = settingsButton.Button.y, font = "Data/Fonts/MaterialIcons-Regular.ttf", fontSize = 72 } )	
+	-- Button Icon
+	leftActionButton.Text = display.newText( { parent = ui_Groups[ 3 ], text = "menu", x = leftActionButton.Button.x, y = leftActionButton.Button.y, font = "Data/Fonts/MaterialIcons-Regular.ttf", fontSize = 72 } ) 
 
 	-- Topbar Title
 	ui_Objects[ "Topbar" ].Title = display.newText( { parent = ui_Groups[ 3 ], text = "Burn it Up!", font = "Data/Fonts/Roboto.ttf", fontSize = 72 } )
-	ui_Objects[ "Topbar" ].Title.x = ( backButton.Button.x + backButton.Button.width * 0.6 ) + ui_Objects[ "Topbar" ].Title.width / 2
-	ui_Objects[ "Topbar" ].Title.y = backButton.Button.y
+	ui_Objects[ "Topbar" ].Title.x = ( leftActionButton.Button.x + leftActionButton.Button.width * 0.6 ) + ui_Objects[ "Topbar" ].Title.width / 2
+	ui_Objects[ "Topbar" ].Title.y = leftActionButton.Button.y
+	
+	local sceneData = { 
+		
+		[ "SceneName" ] = "Menu",
+		[ "SceneGroup" ] = sceneGroup,
+		
+		[ "Buttons" ] = {
+		
+			{ [ "Title" ] = "Week", [ "Icon" ] = "calendar_view_week", [ "Scene" ] = "Overview" },
+			{ [ "Title" ] = "Log", [ "Icon" ] = "monitor_weight", [ "Scene" ] = "Menu" },
+			{ [ "Title" ] = "Goals", [ "Icon" ] = "flag", [ "Scene" ] = "Goals" },
+			{ [ "Title" ] = "Settings", [ "Icon" ] = "settings", [ "Scene" ] = "Settings" },
+			{ [ "Title" ] = "Info", [ "Icon" ] = "info", [ "Scene" ] = "Credits" },
+		
+		},
+	
+	}
+
+	-- Create Navigation Menu
+	ui_Objects[ "NavMenu" ] = navMenuManager:new( sceneData )
 	
 end
 
@@ -106,10 +132,11 @@ function scene:show( event )
 	if ( phase == "will" ) then
 		-- Code here runs when the scene is still off screen (but is about to come on screen)
 		
-		display.setDefault( "background", 245 / 255, 245 / 255, 245 / 255 ) -- FIXME: Add Color Theme Support
 	
 	elseif ( phase == "did" ) then
 		-- Code here runs when the scene is entirely on screen
+
+		display.setDefault( "background", 245 / 255, 245 / 255, 245 / 255 ) -- FIXME: Add Color Theme Support
 
 	end
 end
