@@ -24,6 +24,7 @@ local composer = require( "composer" )
 local scene = composer.newScene( )
 
 local navMenuManager = require( "Data.Modules.UI.navMenuManager" ) -- FIXME: Add Modular Module Loading Code
+local topbarManager = require( "Data.Modules.UI.topbarManager" ) -- FIXME: Add Modular Module Loading Code
 
 -- Tables
 local ui_Groups = { }
@@ -65,40 +66,8 @@ function scene:create( event )
 		
 	end
 	
-	-- Create Topbar
-	local topbarHeight = ( 72 * 2 )
-	ui_Objects[ "Topbar" ] = { }
-	
-	-- Bar
-	ui_Objects[ "Topbar" ].Bar = display.newRect( ui_Groups[ 2 ], display.contentCenterX, ( topbarHeight + display.topStatusBarContentHeight ) / 2, display.contentWidth, topbarHeight + display.topStatusBarContentHeight )
-	ui_Objects[ "Topbar" ].Bar:setFillColor( 76 / 255, 175 / 255, 80 / 255 )
-
-	-- Drop Shadow
-	ui_Objects[ "Topbar" ].DropShadow = display.newRect( ui_Groups[ 1 ], ui_Objects[ "Topbar" ].Bar.x, ui_Objects[ "Topbar" ].Bar.y + ( ui_Objects[ "Topbar" ].Bar.height * 0.025 ), ui_Objects[ "Topbar" ].Bar.width, ui_Objects[ "Topbar" ].Bar.height )
-	ui_Objects[ "Topbar" ].DropShadow:setFillColor( 0, 0, 0, 0.25 )
-	
-	-- Buttons
-	
-	-- Left Action Button
-	ui_Objects[ "Topbar" ].leftActionButton = { }
-	local leftActionButton = ui_Objects[ "Topbar" ].leftActionButton
-	
-	-- Button Background
-	leftActionButton.Button = display.newCircle( ui_Groups[ 2 ], 60 * 1.5, display.topStatusBarContentHeight + 60, 60 )
-	leftActionButton.Button:setFillColor( 8 / 255, 127 / 255, 35 / 255 )
-	
-	leftActionButton.Button.alpha = 0.01
-	leftActionButton.Button.myName = "leftActionButton"
-	
-	leftActionButton.Button:addEventListener( "tap", buttonPress )
-	
-	-- Button Icon
-	leftActionButton.Text = display.newText( { parent = ui_Groups[ 3 ], text = "menu", x = leftActionButton.Button.x, y = leftActionButton.Button.y, font = "Data/Fonts/MaterialIcons-Regular.ttf", fontSize = 72 } ) 
-
-	-- Topbar Title
-	ui_Objects[ "Topbar" ].Title = display.newText( { parent = ui_Groups[ 3 ], text = "Burn it Up!", font = "Data/Fonts/Roboto.ttf", fontSize = 72 } )
-	ui_Objects[ "Topbar" ].Title.x = ( leftActionButton.Button.x + leftActionButton.Button.width * 0.6 ) + ui_Objects[ "Topbar" ].Title.width / 2
-	ui_Objects[ "Topbar" ].Title.y = leftActionButton.Button.y
+	ui_Objects[ "Topbar" ] = topbarManager:new( { [ "Groups" ] = ui_Groups, [ "Title" ] = "Burn it Up!" } )
+	ui_Objects[ "Topbar" ].ui_Objects[ "leftActionButton" ].Button:addEventListener( "tap", buttonPress )
 	
 	local sceneData = { 
 		

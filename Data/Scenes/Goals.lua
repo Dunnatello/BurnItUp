@@ -23,11 +23,29 @@ local composer = require( "composer" )
 
 local scene = composer.newScene()
 
+local navMenuManager = require( "Data.Modules.UI.navMenuManager" ) -- FIXME: Add Modular Module Loading Code
+local topbarManager = require( "Data.Modules.UI.topbarManager" ) -- FIXME: Add Modular Module Loading Code
+
+-- Tables
+local ui_Groups = { }
+local ui_Objects = { }
+
 -- -----------------------------------------------------------------------------------
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
 -- -----------------------------------------------------------------------------------
 
+local function buttonPress( event )
+
+	local button = event.target
+	
+	if ( button.myName == "leftActionButton" ) then
+	
+		ui_Objects[ "NavMenu" ]:setMenuVisibility( true )
+	
+	end
+	
+end
 
 
 
@@ -41,6 +59,37 @@ function scene:create( event )
 	local sceneGroup = self.view
 	-- Code here runs when the scene is first created but has not yet appeared on screen
 
+	-- Create UI Groups
+	for i = 1, 3 do -- Creates a specified amount of UI group layers. Higher numbers are displayed on top of lower groups.
+	
+		ui_Groups[ i ] = display.newGroup( )
+		sceneGroup:insert( ui_Groups[ i ] )
+		
+	end
+	
+	ui_Objects[ "Topbar" ] = topbarManager:new( { [ "Groups" ] = ui_Groups, [ "Title" ] = "Goals" } )
+	ui_Objects[ "Topbar" ].ui_Objects[ "leftActionButton" ].Button:addEventListener( "tap", buttonPress )
+	
+	local sceneData = { 
+		
+		[ "SceneName" ] = "Goals",
+		[ "SceneGroup" ] = sceneGroup,
+		
+		[ "Buttons" ] = {
+		
+			{ [ "Title" ] = "Week", [ "Icon" ] = "calendar_view_week", [ "Scene" ] = "Overview" },
+			{ [ "Title" ] = "Log", [ "Icon" ] = "monitor_weight", [ "Scene" ] = "Menu" },
+			{ [ "Title" ] = "Goals", [ "Icon" ] = "flag", [ "Scene" ] = "Goals" },
+			{ [ "Title" ] = "Settings", [ "Icon" ] = "settings", [ "Scene" ] = "Settings" },
+			{ [ "Title" ] = "Info", [ "Icon" ] = "info", [ "Scene" ] = "Credits" },
+		
+		},
+	
+	}
+
+	-- Create Navigation Menu
+	ui_Objects[ "NavMenu" ] = navMenuManager:new( sceneData )
+	
 end
 
 

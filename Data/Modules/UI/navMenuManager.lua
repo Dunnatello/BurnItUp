@@ -29,11 +29,14 @@ navMenu = {
 	
 	currentScene = nil,
 	menu = { },
-	ui_Groups = { },
+	
 }
 
-function navMenu:setMenuVisibility( newVisibilityState ) -- Close Object Menu
 
+function navMenu:setMenuVisibility( newVisibilityState ) -- Close Object Menu
+	
+	print( "SET MENU VISIBLITY", newVisibilityState, self.currentScene )
+	
 	for i = 1, #self.ui_Groups do
 		
 		self.ui_Groups[ i ].isVisible = newVisibilityState
@@ -60,6 +63,7 @@ end
 function navMenu:createMenu( sceneData )  -- Create Navigation Menu for Scene
 		
 	-- Create Additional UI Scene Groups
+	self.ui_Groups = { }
 	local ui_Groups = self.ui_Groups
 	
 	for i = 1, 6 do 
@@ -71,6 +75,8 @@ function navMenu:createMenu( sceneData )  -- Create Navigation Menu for Scene
 	
 	-- Create Menu Background
 	self.menu[ "NavMenu" ] = { }
+	
+	self.currentScene = sceneData[ "SceneName" ]
 	
 	local navMenu = self.menu[ "NavMenu" ]
 	
