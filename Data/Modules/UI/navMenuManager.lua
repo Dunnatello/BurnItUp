@@ -34,9 +34,7 @@ navMenu = {
 
 
 function navMenu:setMenuVisibility( newVisibilityState ) -- Close Object Menu
-	
-	print( "SET MENU VISIBLITY", newVisibilityState, self.currentScene )
-	
+		
 	for i = 1, #self.ui_Groups do
 		
 		self.ui_Groups[ i ].isVisible = newVisibilityState
@@ -46,9 +44,7 @@ function navMenu:setMenuVisibility( newVisibilityState ) -- Close Object Menu
 end
 
 function navMenu:buttonPress( button )
-	
-	print( button.myName )
-	
+		
 	if ( button.buttonType == "Scene" and button.myName ~= self.currentScene ) then
 	
 		composer.gotoScene( "Data.Scenes." .. button.myName, { effect = "crossFade", time = 300 } )
