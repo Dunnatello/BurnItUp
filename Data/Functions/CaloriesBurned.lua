@@ -1,7 +1,10 @@
 function calcCaloriesBurned()
   -- User selects exercise from drop down menu
   -- We need to create file with MET values for common exercises
-  io.write("Enter MET value: ")
+  io.write("Enter MET value: ") --[[We should change this to "Enter MET index: " for the table
+									since it would be a drop down, and a dictionary could hold 
+									the met values in order (so if you picked the 4th exercise
+									in the dictionary, it would retrieve the fourth index).]]--
   METvalue = io.read()
 
   -- User will input duration in minutes
