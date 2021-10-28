@@ -1,9 +1,10 @@
-metDataModule = require("metData")
+local Calculator = {} 
 
+metDataModule = require("metData")
 -- Testing a function call from metData.lua
 metDataModule.printMetValues()
 
-function calcCaloriesBurned()
+function Calculator.calcCaloriesBurned()
   -- This will eventually call getMetValue() when user selects an exercise
   print("Enter MET value: ")
   METvalue = io.read()
@@ -24,3 +25,4 @@ end
 
 calcCaloriesBurned()
 
+return Calculator
