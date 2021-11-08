@@ -21,4 +21,6 @@ Purpose: Starting point of the Solar2D project.
 
 local composer = require( "composer" ) -- Retrieve the scene handler.
 
+display.setDefault( "background", 245 / 255, 245 / 255, 245 / 255 ) -- FIXME: Add Color Theme Support
+
 composer.gotoScene( "Data.Scenes.Splash" ) -- Go to the Splash scene.

@@ -105,7 +105,6 @@ function scene:show( event )
 	elseif ( phase == "did" ) then
 		-- Code here runs when the scene is entirely on screen
 
-		display.setDefault( "background", 245 / 255, 245 / 255, 245 / 255 ) -- FIXME: Add Color Theme Support
 
 	end
 end

@@ -20,6 +20,7 @@ Purpose: Show the group logo and then transition to the menu.
 ]]
 
 local composer = require( "composer" )
+local storage = require( "Data.Modules.Backend.Storage.storageHandler" )
 
 local scene = composer.newScene( )
 
@@ -57,7 +58,8 @@ function scene:create( event )
 	
 	ui_Objects[ "Logo" ] = display.newImageRect( ui_Groups[ 2 ], "Data/Assets/GroupLogo.png", display.contentWidth * 0.75, display.contentWidth * 0.75 )
 	ui_Objects[ "Logo" ].x, ui_Objects[ "Logo" ].y = display.contentCenterX, display.contentCenterY
-
+	ui_Objects[ "Logo" ].alpha = 0
+	
 end
 
 
@@ -69,13 +71,24 @@ function scene:show( event )
 
 	if ( phase == "will" ) then
 		-- Code here runs when the scene is still off screen (but is about to come on screen)
-			
-		display.setDefault( "background", 243 / 255, 234 / 255, 225 / 255 )
+
+		--display.setDefault( "background", 243 / 255, 234 / 255, 225 / 255 )
 		
 	elseif ( phase == "did" ) then
 		-- Code here runs when the scene is entirely on screen
 		
-		timer.performWithDelay( 1000, function( ) gotoScene( "Data.Scenes.Menu" ) end ) -- Transition to a new scene after a certain amount of seconds have passed.
+		transition.to( ui_Objects[ "Logo" ], { time = 500, alpha = 1, delay = 150 } )
+		
+		local newScene = "Data.Scenes.Menu"
+		
+		local currentData = storage.getData( )
+		if ( currentData[ "Info" ][ "Name" ] == "N/A" ) then -- If user hasn't set up their profile yet, send them to the Setup scene to handle the initial data.
+			
+			newScene = "Data.Scenes.Setup"
+			
+		end
+		
+		timer.performWithDelay( 1500, function( ) gotoScene( newScene ) end ) -- Transition to a new scene after a certain amount of seconds have passed.
 		
 	end
 end

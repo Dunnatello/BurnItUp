@@ -39,6 +39,14 @@ function topbar:create( sceneData )
 	
 	local topbar = self.ui_Objects[ "Topbar" ]
 	
+	local isNavButtonEnabled = sceneData[ "NavButtonEnabled" ]
+	
+	if ( isNavButtonEnabled == nil ) then
+	
+		isNavButtonEnabled = true
+		
+	end
+	
 	-- Bar
 	topbar.Bar = display.newRect( ui_Groups[ 2 ], display.contentCenterX, ( topbarHeight + display.topStatusBarContentHeight ) / 2, display.contentWidth, topbarHeight + display.topStatusBarContentHeight )
 	topbar.Bar:setFillColor( 76 / 255, 175 / 255, 80 / 255 )
@@ -63,11 +71,15 @@ function topbar:create( sceneData )
 	--leftActionButton.Button:addEventListener( "tap", buttonPress )
 	
 	-- Button Icon
-	leftActionButton.Text = display.newText( { parent = ui_Groups[ 3 ], text = "menu", x = leftActionButton.Button.x, y = leftActionButton.Button.y, font = "Data/Fonts/MaterialIcons-Regular.ttf", fontSize = 72 } ) 
-
+	leftActionButton.Text = display.newText( { parent = ui_Groups[ 3 ], text = sceneData[ "NavButtonIcon" ] or "menu", x = leftActionButton.Button.x, y = leftActionButton.Button.y, font = "Data/Fonts/MaterialIcons-Regular.ttf", fontSize = 72 } ) 
+	
+	leftActionButton.Button.isVisible = isNavButtonEnabled
+	leftActionButton.Text.isVisible = isNavButtonEnabled
+		
 	-- Topbar Title
-	topbar.Title = display.newText( { parent = ui_Groups[ 3 ], text = sceneData[ "Title" ] or "", font = "Data/Fonts/Roboto.ttf", fontSize = 72 } )
-	topbar.Title.x = ( leftActionButton.Button.x + leftActionButton.Button.width * 0.6 ) + topbar.Title.width / 2
+	topbar.Title = display.newText( { parent = ui_Groups[ 3 ], text = sceneData[ "Title" ] or "", width = display.contentWidth - ( leftActionButton.Button.x + leftActionButton.Button.width * 0.75 ),  font = "Data/Fonts/Roboto.ttf", fontSize = 72, align = "left" } )
+	--topbar.Title.x = ( leftActionButton.Button.x + leftActionButton.Button.width * 0.75 ) + topbar.Title.width / 2
+	topbar.Title.x = display.contentWidth - topbar.Title.width / 2
 	topbar.Title.y = leftActionButton.Button.y
 	
 end
@@ -90,6 +102,13 @@ end
 function topbar:setTitle( newTitle )
 
 	self.ui_Objects[ "Topbar" ].Title.text = newTitle or ""
+	
+end
+
+function topbar:setActionButtonState( newVisibilityState )
+
+	self.ui_Objects[ "leftActionButton" ].Button.isVisible = newVisibilityState
+	self.ui_Objects[ "leftActionButton" ].Text.isVisible = newVisibilityState
 	
 end
 
