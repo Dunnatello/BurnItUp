@@ -1,6 +1,10 @@
 local Calculator = {} 
 
+storageAccess = require("storage")
+
 metDataModule = require("metData")
+
+dateAccess = require("date")
 -- Testing a function call from metData.lua
 -- metDataModule.printMetValues()
 
@@ -20,5 +24,14 @@ function Calculator.calcCaloriesBurned(exercise, minutes, weightLbs)
 end
 
 Calculator.calcCaloriesBurned("jump rope", 80, 143.3)
+
+function Calculator.calculateAge()
+
+	--[[userAge = storageAccess.getData().["Info"].["Date of Birth"]
+	currentDate = date("Nov 11 2021 -6:00")	
+	difference = diff(userAge, currentDate)
+	return difference:getYear()--]]  MAY OR MAY NOT WORK
+
+end
 
 return Calculator
