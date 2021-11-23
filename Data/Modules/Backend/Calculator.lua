@@ -1,10 +1,10 @@
 local Calculator = {} 
 
-storageAccess = require("Data.Modules.Backend.Storage.storageHandler")
+local storageAccess = require("Data.Modules.Backend.Storage.storageHandler")
 
-metDataModule = require("Data.Modules.Backend.metData")
+local metDataModule = require("Data.Modules.Backend.metData")
 
-dateAccess = require("Data.Modules.External Libraries.date")
+local dateAccess = require("Data.Modules.External Libraries.date")
 -- Testing a function call from metData.lua
 -- metDataModule.printMetValues()
 
