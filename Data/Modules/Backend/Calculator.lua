@@ -1,10 +1,10 @@
 local Calculator = {} 
 
-storageAccess = require("storage")
+storageAccess = require("Data.Modules.Backend.Storage.storageHandler")
 
-metDataModule = require("metData")
+metDataModule = require("Data.Modules.Backend.metData")
 
-dateAccess = require("date")
+dateAccess = require("Data.Modules.External Libraries.date")
 -- Testing a function call from metData.lua
 -- metDataModule.printMetValues()
 
@@ -27,10 +27,19 @@ Calculator.calcCaloriesBurned("jump rope", 80, 143.3)
 
 function Calculator.calculateAge()
 
-	--[[userAge = storageAccess.getData().["Info"].["Date of Birth"]
-	currentDate = date("Nov 11 2021 -6:00")	
-	difference = diff(userAge, currentDate)
-	return difference:getYear()--]]  MAY OR MAY NOT WORK
+	local storedAge = storageAccess.getData()["Info"]["Date of Birth"]
+
+	
+
+	local userAge = dateAccess(2002, 1, 31)	--userAge["Year"], userAge["Month"], userAge["Day"]
+
+	local currentDate = dateAccess(2021, 11, 23)
+
+	local difference = dateAccess.diff(currentDate, userAge)
+
+	local dayCount = difference:spandays() / 365
+
+	return math.floor(dayCount)
 
 end
 
