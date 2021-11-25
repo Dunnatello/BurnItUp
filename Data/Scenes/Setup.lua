@@ -61,6 +61,8 @@ local sections = {
 		InputType = "no-emoji",
 	},
 	
+	-- FIXME: Prompt Gender Input
+	
 	[ "Age" ] = { 
 		DisplayName = "Date of Birth",
 		Setting = "Date of Birth",
@@ -115,7 +117,8 @@ local newProfileData = {
 	[ "Height" ] = { [ "Feet" ] = nil, [ "Inches" ] = nil }, -- Height in Feet/Inches
 	[ "Initial Weight" ] = nil, -- Weight in Pounds
 	[ "Weight Goal" ] = nil, -- Weight in Pounds
-
+	[ "Calorie Budget" ] = 2000,
+	
 }
 
 local currentDate = nil

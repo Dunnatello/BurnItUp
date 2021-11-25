@@ -41,6 +41,8 @@ function navMenu:setMenuVisibility( newVisibilityState ) -- Close Object Menu
 		
 	end
 	
+	self.isVisible = newVisibilityState
+
 end
 
 function navMenu:buttonPress( button )
@@ -155,7 +157,8 @@ function navMenu:createMenu( sceneData )  -- Create Navigation Menu for Scene
 		end
 		
 		-- Create a close menu button to close the nav menu later on.
-		local closeMenu = { }
+		navMenu[ "Close" ] = { }
+		local closeMenu = navMenu[ "Close" ]
 		
 		-- Close Menu Button Icon
 		closeMenu[ "Icon" ] = display.newText( { parent = ui_Groups[ 6 ], text = "close", x = navMenu[ "Background" ].x, font = "Data/Fonts/MaterialIcons-Regular", fontSize = 72, align = "center" } )
@@ -164,7 +167,8 @@ function navMenu:createMenu( sceneData )  -- Create Navigation Menu for Scene
 		-- Close Menu Button Background
 		closeMenu[ "Button" ] = display.newCircle( ui_Groups[ 5 ], navMenu[ "Background" ].x, ( navMenu[ "Background" ].y + navMenu[ "Background" ].height / 2 ) + closeMenu[ "Icon" ].height * 1.5, 72 )
 		closeMenu[ "Button" ]:setFillColor( 128 / 255, 226 / 255, 126 / 255 )
-	
+		closeMenu[ "Button" ].myName = "Close"
+		
 		-- Add Button Event Listener
 		closeMenu[ "Button" ]:addEventListener( "tap", function( ) self:setMenuVisibility( false ) end )
 		
@@ -174,16 +178,16 @@ function navMenu:createMenu( sceneData )  -- Create Navigation Menu for Scene
 		-- Add Drop Shadow to Button Background
 		closeMenu[ "DropShadow" ] = display.newCircle( ui_Groups[ 4 ], closeMenu[ "Button" ].x + 4, closeMenu[ "Button" ].y + 4, 72 )
 		closeMenu[ "DropShadow" ]:setFillColor( 0, 0, 0, 0.25 )
-		
-		-- Hide Menu
-		self:setMenuVisibility( false )
 	
 	else -- Internal Developer Error Message
 	
-		print( "[Nav Menu Issue]: No buttons have been specified." )
+		print( "ERROR: [Nav Menu Issue]: No buttons have been specified." )
 		
 	end
 	
+	-- Hide Menu
+	self:setMenuVisibility( false )
+		
 end
 
 function navMenu:new( sceneData, object )
@@ -212,6 +216,7 @@ function navMenu:new( sceneData, object )
 	self.__index = self
 	
 	object.currentScene = sceneData[ "SceneName" ]
+	object.isVisible = false
 	
 	object:createMenu( sceneData )
 	

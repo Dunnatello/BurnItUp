@@ -67,9 +67,7 @@ function topbar:create( sceneData )
 	
 	leftActionButton.Button.alpha = 0.01
 	leftActionButton.Button.myName = "leftActionButton"
-	
-	--leftActionButton.Button:addEventListener( "tap", buttonPress )
-	
+		
 	-- Button Icon
 	leftActionButton.Text = display.newText( { parent = ui_Groups[ 3 ], text = sceneData[ "NavButtonIcon" ] or "menu", x = leftActionButton.Button.x, y = leftActionButton.Button.y, font = "Data/Fonts/MaterialIcons-Regular.ttf", fontSize = 72 } ) 
 	
