@@ -1,45 +1,74 @@
-local Calculator = {} 
+--[[ 
 
-local storageAccess = require("Data.Modules.Backend.Storage.storageHandler")
+-------------------------
 
-local metDataModule = require("Data.Modules.Backend.metData")
+Burn it Up! Project
 
-local dateAccess = require("Data.Modules.External Libraries.date")
+-------------------------
+
+Group: Shark Bait Group 4
+Team Members: Chase Balmes, Timothy Bennett, Michael Dunn, Talha Khan, Jonathan Nguyen
+Class: CSC 331-101: Software Engineering Principles
+
+-------------------------
+
+Current Module: Calculator
+Purpose: Calculates Calories Burned and Other Calculations Needed for Calorie Tracking
+
+-------------------------
+
+]]
+
+local Calculator = { } 
+
+-- Modules
+local storageAccess = require( "Data.Modules.Backend.Storage.storageHandler" )
+local metDataModule = require( "Data.Modules.Backend.metData" )
+local dateAccess = require( "Data.Modules.External Libraries.date" )
+
+local savedData = storageAccess.getData( )
+
 -- Testing a function call from metData.lua
 -- metDataModule.printMetValues()
 
---This will be needed if we take user input as hours, minutes
-function Calculator.hoursToMinutes(hours, minutes) 
-  minutes = 60 * hours + minutes
-  return minutes
-end
+--This will be needed if we take user input as hours, minutes.
+function calculator.hoursToMinutes( hours, minutes ) 
 
-function Calculator.calcCaloriesBurned(exercise, minutes, weightLbs)
-  -- Floor + 0.5 rounds to the nearest integer
-  -- Converts lbs input to kg
-  -- Duration needs to be in minutes (subject to change)
-  roundedCalories = math.floor((((metDataModule.getMetValue(exercise) * 3.5 * (weightLbs * 0.453592 )  / 200 ) * minutes) + 0.5))
-  print("Calories burned: " .. roundedCalories)
-
-end
-
-Calculator.calcCaloriesBurned("jump rope", 80, 143.3)
-
-function Calculator.calculateAge()
-
-	local storedAge = storageAccess.getData()["Info"]["Date of Birth"]
-
+	local minutes = 60 * hours + minutes
+	return minutes
 	
+end
 
-	local userAge = dateAccess(2002, 1, 31)	--userAge["Year"], userAge["Month"], userAge["Day"]
+function Calculator.calcCaloriesBurned( exercise, minutes, weightLbs )
+	
+	-- Floor + 0.5 rounds to the nearest integer
+	-- Converts lbs input to kg
+	-- Duration needs to be in minutes (subject to change)
+	
+	local roundedCalories = math.floor( ( ( ( metDataModule.getMetValue( exercise ) * 3.5 * ( weightLbs * 0.453592 )  / 200 ) * minutes ) + 0.5) )
+	
+	print( "Calories burned: " .. roundedCalories )
 
-	local currentDate = dateAccess(2021, 11, 23)
+	return roundedCalories
+	
+end
 
-	local difference = dateAccess.diff(currentDate, userAge)
+--Calculator.calcCaloriesBurned( "jump rope", 80, 143.3 ) -- FIXME: Remove After Testing
 
-	local dayCount = difference:spandays() / 365
+function Calculator.calculateAge( )
 
-	return math.floor(dayCount)
+	local storedDOB = savedData[ "Info" ][ "Date of Birth" ]
+
+	local convertedDOB = dateAccess( storedDOB[ "Year" ], storedDOB[ "Month" ], storedDOB[ "Day" ] )
+	local currentDate = dateAccess( false ) -- Returns Current Date
+
+	-- Calculate Date Difference
+	local difference = dateAccess.diff( currentDate, convertedDOB )
+
+	-- Convert Days to Years
+	local userAge = math.floor( difference:spandays( ) / 365 )
+
+	return userAge
 
 end
 
