@@ -32,9 +32,11 @@ topbar = {
 function topbar:create( sceneData )
 
 	local ui_Groups = sceneData[ "Groups" ]
-	
+	local scaleRatio = sceneData[ "ScaleRatio" ] or 1
+
+
 	-- Create Topbar
-	local topbarHeight = ( 72 * 2 )
+	local topbarHeight = ( ( 42 * scaleRatio ) * 2 )
 	self.ui_Objects[ "Topbar" ] = { }
 	
 	local topbar = self.ui_Objects[ "Topbar" ]
@@ -46,6 +48,7 @@ function topbar:create( sceneData )
 		isNavButtonEnabled = true
 		
 	end
+	
 	
 	-- Bar
 	topbar.Bar = display.newRect( ui_Groups[ 2 ], display.contentCenterX, ( topbarHeight + display.topStatusBarContentHeight ) / 2, display.contentWidth, topbarHeight + display.topStatusBarContentHeight )
@@ -62,20 +65,20 @@ function topbar:create( sceneData )
 	local leftActionButton = self.ui_Objects[ "leftActionButton" ]
 	
 	-- Button Background
-	leftActionButton.Button = display.newCircle( ui_Groups[ 2 ], 60 * 1.5, display.topStatusBarContentHeight + 60, 60 )
+	leftActionButton.Button = display.newCircle( ui_Groups[ 2 ], ( 42 * scaleRatio ) * 1.5, display.topStatusBarContentHeight + ( 42 * scaleRatio ), 42 * scaleRatio )
 	leftActionButton.Button:setFillColor( 8 / 255, 127 / 255, 35 / 255 )
 	
 	leftActionButton.Button.alpha = 0.01
 	leftActionButton.Button.myName = "leftActionButton"
 		
 	-- Button Icon
-	leftActionButton.Text = display.newText( { parent = ui_Groups[ 3 ], text = sceneData[ "NavButtonIcon" ] or "menu", x = leftActionButton.Button.x, y = leftActionButton.Button.y, font = "Data/Fonts/MaterialIcons-Regular.ttf", fontSize = 72 } ) 
+	leftActionButton.Text = display.newText( { parent = ui_Groups[ 3 ], text = sceneData[ "NavButtonIcon" ] or "menu", x = leftActionButton.Button.x, y = leftActionButton.Button.y, font = "Data/Fonts/MaterialIcons-Regular.ttf", fontSize = 42 * scaleRatio } ) 
 	
 	leftActionButton.Button.isVisible = isNavButtonEnabled
 	leftActionButton.Text.isVisible = isNavButtonEnabled
 		
 	-- Topbar Title
-	topbar.Title = display.newText( { parent = ui_Groups[ 3 ], text = sceneData[ "Title" ] or "", width = display.contentWidth - ( leftActionButton.Button.x + leftActionButton.Button.width * 0.75 ),  font = "Data/Fonts/Roboto.ttf", fontSize = 72, align = "left" } )
+	topbar.Title = display.newText( { parent = ui_Groups[ 3 ], text = sceneData[ "Title" ] or "", width = display.contentWidth - ( leftActionButton.Button.x + leftActionButton.Button.width * 0.75 ),  font = "Data/Fonts/Roboto.ttf", fontSize = 42 * scaleRatio, align = "left" } )
 	--topbar.Title.x = ( leftActionButton.Button.x + leftActionButton.Button.width * 0.75 ) + topbar.Title.width / 2
 	topbar.Title.x = display.contentWidth - topbar.Title.width / 2
 	topbar.Title.y = leftActionButton.Button.y

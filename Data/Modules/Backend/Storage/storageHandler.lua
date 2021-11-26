@@ -27,7 +27,29 @@ local filePath = system.pathForFile( "Settings.json", system.DocumentsDirectory 
 
 local json = require( "json" )
 
-local function saveData( )
+local function generateInitialData( )
+
+	currentData = { 
+
+		[ "Info" ] = {
+		
+			[ "Name" ] = "N/A",
+			[ "Date of Birth" ] = "N/A",
+			[ "Height" ] = { [ "Feet" ] = "N/A", [ "Inches" ] = "N/A" }, -- Height in Feet/Inches
+			[ "Initial Weight" ] = "N/A", -- Weight in Pounds
+			[ "Weight Goal" ] = "N/A", -- Weight in Pounds
+			[ "Current Age" ] = "N/A",
+
+		},
+
+		[ "Weight Log" ] = { }, -- Data entries for the user's weight over time.
+		[ "Calorie Log" ] = { },
+	
+	}
+	
+end
+
+local function saveDataToFile( ) -- Save Data to File
 	
 	local file = io.open( filePath, "w" )
 
@@ -44,7 +66,7 @@ local function saveData( )
 	
 end
 
-local function loadData( )
+local function loadData( ) -- Load Data from File
 
 	local file = io.open( filePath, "r" )
 		
@@ -58,25 +80,9 @@ local function loadData( )
 	
 	else -- Generate Initial Data
 	
-		currentData = { 
-
-			[ "Info" ] = {
-			
-				[ "Name" ] = "N/A",
-				[ "Date of Birth" ] = "N/A",
-				[ "Height" ] = { [ "Feet" ] = "N/A", [ "Inches" ] = "N/A" }, -- Height in Feet/Inches
-				[ "Initial Weight" ] = "N/A", -- Weight in Pounds
-				[ "Weight Goal" ] = "N/A", -- Weight in Pounds
-				[ "Current Age" ] = "N/A",
-
-			},
-
-			[ "Weight Log" ] = { }, -- Data entries for the user's weight over time.
-			[ "Calorie Log" ] = { },
+		generateInitialData( )
 		
-		}
-		
-		saveData( )
+		saveDataToFile( )
 		
 		print( "Generating initial data" )
 		
@@ -85,8 +91,18 @@ local function loadData( )
 end
 
 
+function storage.deleteData( ) -- Delete save file
 
-function storage.getData( )
+	local result, reason = os.remove( system.pathForFile( "Settings.json", system.DocumentsDirectory ) )
+	
+	currentData = nil
+	generateInitialData( )
+
+	return result, reason
+	
+end
+
+function storage.getData( ) -- Get data Table
 	
 	if ( currentData == nil ) then
 	
@@ -98,9 +114,9 @@ function storage.getData( )
 	
 end
 
-function storage.saveData( )
+function storage.saveData( ) -- Call Save Data to File Function
 	
-	saveData( )
+	saveDataToFile( )
 	
 end
 

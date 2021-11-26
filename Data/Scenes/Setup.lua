@@ -21,14 +21,27 @@ Purpose: Allow the user to set their initial data.
 ]]
 -- Default Libraries
 local composer = require( "composer" )
-local widget = require( "widget" )
 
--- Custom Libraries
-local storage = require( "Data.Modules.Backend.Storage.storageHandler" )
-local dateVerifier = require( "Data.Modules.Backend.dateVerifier" )
+-- Modules
+local moduleNames = { 
 
-local navMenuManager = require( "Data.Modules.UI.navMenuManager" ) -- FIXME: Add Modular Module Loading Code
-local topbarManager = require( "Data.Modules.UI.topbarManager" ) -- FIXME: Add Modular Module Loading Code
+	-- UI
+	{ Name = "topbarManager", Location = "Data.Modules.UI.topbarManager" },
+	{ Name = "scaler", Location = "Data.Modules.UI.scaler" },
+
+	-- Backend
+	{ Name = "storage", Location = "Data.Modules.Backend.Storage.storageHandler" },
+	{ Name = "dateVerifier", Location = "Data.Modules.Backend.dateVerifier" },
+	
+}
+
+local modules = { }
+
+for i = 1, #moduleNames do
+	
+	modules[ moduleNames[ i ].Name ] = require( moduleNames[ i ].Location )
+	
+end
 
 local scene = composer.newScene( )
 
@@ -135,6 +148,7 @@ local textFieldData = {
 	
 }
 
+local scaleRatio = 1
 -- -----------------------------------------------------------------------------------
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
@@ -142,10 +156,10 @@ local textFieldData = {
 
 local function submitData( ) -- Submit Data and Goto Menu
 
-	local currentData = storage.getData( )
+	local currentData = modules[ "storage" ].getData( )
 	
 	currentData[ "Info" ] = newProfileData
-	storage.saveData( )
+	modules[ "storage" ].saveData( )
 	
 	composer.gotoScene( "Data.Scenes.Menu", { effect = "crossFade", time = 400 } )
  
@@ -296,7 +310,7 @@ local function checkInput( ) -- Check User Input
 		
 		if ( currentSectionInfo.Type == "DateInput" ) then -- Check Date Input
 		
-			local newDate = dateVerifier.checkDateFromString( ui_Objects[ "Text Inputs" ][ 1 ].Field.text )
+			local newDate = modules[ "dateVerifier" ].checkDateFromString( ui_Objects[ "Text Inputs" ][ 1 ].Field.text )
 			
 			if ( newDate ~= nil ) then -- Date Input Correct
 			
@@ -387,16 +401,18 @@ function scene:create( event )
 		
 	end
 	
+	scaleRatio = modules[ "scaler" ].new( )
+	
 	-- Topbar
-	ui_Objects[ "Topbar" ] = topbarManager:new( { [ "Groups" ] = ui_Groups, [ "Title" ] = "Test", [ "NavButtonEnabled" ] = true, [ "NavButtonIcon" ] = "arrow_back" } )
+	ui_Objects[ "Topbar" ] = modules[ "topbarManager" ]:new( { [ "Groups" ] = ui_Groups, [ "Title" ] = "Welcome", [ "NavButtonEnabled" ] = true, [ "NavButtonIcon" ] = "arrow_back", [ "ScaleRatio" ] = scaleRatio } )
 	ui_Objects[ "Topbar" ].ui_Objects[ "leftActionButton" ].Button:addEventListener( "tap", buttonPress )
 	
 	-- Prompt Text
-	ui_Objects[ "Prompt" ] = display.newText( { parent = ui_Groups[ 3 ], text = "What is your birth date? [MM/DD/YYYY]", x = display.contentCenterX, y = display.contentHeight * 0.3, width = display.contentWidth * 0.8, font = "Data/Fonts/Roboto-Bold.ttf", fontSize = 60, align = "center" } )
+	ui_Objects[ "Prompt" ] = display.newText( { parent = ui_Groups[ 3 ], text = "What is your birth date? [MM/DD/YYYY]", x = display.contentCenterX, y = display.contentHeight * 0.3, width = display.contentWidth * 0.8, font = "Data/Fonts/Roboto-Bold.ttf", fontSize = 48 * scaleRatio, align = "center" } )
 	ui_Objects[ "Prompt" ]:setFillColor( 0, 0, 0, 1 )
 
 	-- Info Text
-	ui_Objects[ "Info" ] = display.newText( { parent = ui_Groups[ 3 ], text = "", x = display.contentCenterX, y = display.contentCenterY, width = display.contentWidth * 0.8, font = "Data/Fonts/Roboto-Bold.ttf", fontSize = 60, align = "left" } )
+	ui_Objects[ "Info" ] = display.newText( { parent = ui_Groups[ 3 ], text = "", x = display.contentCenterX, y = display.contentCenterY, width = display.contentWidth * 0.8, font = "Data/Fonts/Roboto-Bold.ttf", fontSize = 36 * scaleRatio, align = "left" } )
 	ui_Objects[ "Info" ]:setFillColor( 0, 0, 0, 1 )
 	
 	-- Welcome Image
@@ -409,16 +425,16 @@ function scene:create( event )
 	local submitButton = ui_Objects[ "Submit" ]
 	
 	-- Title
-	submitButton.Title = display.newText( { parent = ui_Groups[ 3 ], text = "Next", x = display.contentCenterX, y = display.contentHeight * 0.9, width = display.contentWidth * 0.8, font = "Data/Fonts/Roboto-Bold.ttf", fontSize = 60, align = "center" } )
+	submitButton.Title = display.newText( { parent = ui_Groups[ 3 ], text = "Next", x = display.contentCenterX, y = display.contentHeight * 0.9, width = display.contentWidth * 0.8, font = "Data/Fonts/Roboto-Bold.ttf", fontSize = 32 * scaleRatio, align = "center" } )
 	
 	-- Button
-	submitButton.Button = display.newRoundedRect( ui_Groups[ 2 ], submitButton.Title.x, submitButton.Title.y, submitButton.Title.width, submitButton.Title.height + 30, 50 )
+	submitButton.Button = display.newRoundedRect( ui_Groups[ 2 ], submitButton.Title.x, submitButton.Title.y, submitButton.Title.width, submitButton.Title.height + ( 30 * scaleRatio ), 50 * scaleRatio )
 	submitButton.Button:setFillColor( 8 / 255, 127 / 255, 35 / 255 )
 	submitButton.Button.myName = "Submit"
 	submitButton.Button:addEventListener( "tap", buttonPress )
 	
 	-- Drop Shadow
-	submitButton.DropShadow = display.newRoundedRect( ui_Groups[ 1 ], submitButton.Button.x + 4, submitButton.Button.y + 4, submitButton.Button.width, submitButton.Button.height, 50 )
+	submitButton.DropShadow = display.newRoundedRect( ui_Groups[ 1 ], submitButton.Button.x + 4, submitButton.Button.y + 4, submitButton.Button.width, submitButton.Button.height, 50 * scaleRatio )
 	submitButton.DropShadow:setFillColor( 0, 0, 0, 0.25 )	
 	
 	-- Text Input Creation
@@ -431,20 +447,20 @@ function scene:create( event )
 		local currentInput = ui_Objects[ "Text Inputs" ][ i ]
 		
 		-- Text Field
-		currentInput.Field = native.newTextField( display.contentCenterX, display.contentCenterY + ( 72 * 5 ) * ( i - 1 ), display.contentWidth * 0.8, 72 * 1.5 )
+		currentInput.Field = native.newTextField( display.contentCenterX, display.contentCenterY + ( ( 72 * scaleRatio ) * 3 ) * ( i - 1 ), display.contentWidth * 0.8, 60 * scaleRatio )
 		currentInput.Field.align = "center"
 		currentInput.Field:resizeFontToFitHeight( )
 		
 		sceneGroup:insert( currentInput.Field )
 		
 		-- Title Text
-		currentInput.Title = display.newText( { parent = ui_Groups[ 3 ], text = "", x = display.contentCenterX, width = display.contentWidth * 0.8, font = "Data/Fonts/Roboto-Bold.ttf", fontSize = 60, align = "center" } )
+		currentInput.Title = display.newText( { parent = ui_Groups[ 3 ], text = "", x = display.contentCenterX, width = display.contentWidth * 0.8, font = "Data/Fonts/Roboto-Bold.ttf", fontSize = 42 * scaleRatio, align = "center" } )
 		currentInput.Title.y = ( currentInput.Field.y - currentInput.Field.height / 2 ) - currentInput.Title.height
 		
 		currentInput.Title:setFillColor( 0, 0, 0, 0.75 )
 	
 		-- Warning Text
-		currentInput.Warning = display.newText( { parent = ui_Groups[ 3 ], text = "Missing text.", x = display.contentCenterX, width = display.contentWidth * 0.8, font = "Data/Fonts/Roboto-Bold.ttf", fontSize = 56, align = "center" } )
+		currentInput.Warning = display.newText( { parent = ui_Groups[ 3 ], text = "Missing text.", x = display.contentCenterX, width = display.contentWidth * 0.8, font = "Data/Fonts/Roboto-Bold.ttf", fontSize = 36 * scaleRatio, align = "center" } )
 		currentInput.Warning.y = ( currentInput.Field.y + currentInput.Field.height * 0.75 ) + currentInput.Warning.height / 2
 		currentInput.Warning:setFillColor( 186 / 255, 0 / 255, 13 / 255 )
 		currentInput.Warning.isVisible = false

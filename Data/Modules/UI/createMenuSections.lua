@@ -259,7 +259,7 @@ function sectionCreator.createSections( currentGroups, currentObjects, newScaleR
 			newListing[ "Calories" ].y = newListing[ "Title" ].y
 			
 			-- Invisible Button
-			newListing[ "Button" ] = display.newRect( ui_Groups[ 2 ], newSection[ "Background" ].x, ( newListing[ "Title" ].y + newListing[ "Serving" ].y ) / 2, newSection[ "Background" ].width, ( newListing[ "Serving" ].y + newListing[ "Serving" ].height / 2 ) - ( newListing[ "Title" ].y - newListing[ "Title" ].height / 2 ) )
+			newListing[ "Button" ] = display.newRect( ui_Groups[ 2 ], newSection[ "Background" ].x, ( newListing[ "Title" ].y + newListing[ "Serving" ].y ) / 2, newSection[ "Background" ].width * 0.9, ( newListing[ "Serving" ].y + newListing[ "Serving" ].height / 2 ) - ( newListing[ "Title" ].y - newListing[ "Title" ].height / 2 ) )
 			newListing[ "Button" ].myName = itemList[ e ]
 			newListing[ "Button" ].buttonType = "ItemListing"
 			newListing[ "Button" ].category = Sections[ i ]

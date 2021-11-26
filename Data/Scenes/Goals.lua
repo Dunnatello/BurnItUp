@@ -67,7 +67,7 @@ function scene:create( event )
 		
 	end
 	
-	ui_Objects[ "Topbar" ] = topbarManager:new( { [ "Groups" ] = ui_Groups, [ "Title" ] = "Goals" } )
+	ui_Objects[ "Topbar" ] = topbarManager:new( { [ "Groups" ] = ui_Groups, [ "Title" ] = "Goals", [ "ScaleRatio" ] = scaleRatio } )
 	ui_Objects[ "Topbar" ].ui_Objects[ "leftActionButton" ].Button:addEventListener( "tap", buttonPress )
 	
 	local sceneData = { 

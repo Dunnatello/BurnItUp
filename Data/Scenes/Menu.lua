@@ -138,7 +138,7 @@ function scene:create( event )
 	scaleRatio = modules[ "scaler" ].new( )
 	
 	-- Create Topbar
-	ui_Objects[ "Topbar" ] = modules[ "topbarManager" ]:new( { [ "Groups" ] = ui_Groups, [ "Title" ] = "Burn it Up!" } )
+	ui_Objects[ "Topbar" ] = modules[ "topbarManager" ]:new( { [ "Groups" ] = ui_Groups, [ "Title" ] = "Burn it Up!", [ "ScaleRatio" ] = scaleRatio } )
 	ui_Objects[ "Topbar" ].ui_Objects[ "leftActionButton" ].Button:addEventListener( "tap", buttonPress )
 
 	local sceneData = { 
