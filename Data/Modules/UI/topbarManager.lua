@@ -79,7 +79,6 @@ function topbar:create( sceneData )
 		
 	-- Topbar Title
 	topbar.Title = display.newText( { parent = ui_Groups[ 3 ], text = sceneData[ "Title" ] or "", width = display.contentWidth - ( leftActionButton.Button.x + leftActionButton.Button.width * 0.75 ),  font = "Data/Fonts/Roboto.ttf", fontSize = 42 * scaleRatio, align = "left" } )
-	--topbar.Title.x = ( leftActionButton.Button.x + leftActionButton.Button.width * 0.75 ) + topbar.Title.width / 2
 	topbar.Title.x = display.contentWidth - topbar.Title.width / 2
 	topbar.Title.y = leftActionButton.Button.y
 	

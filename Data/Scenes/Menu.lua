@@ -63,6 +63,8 @@ local ui_Objects = { }
 
 local savedData
 
+local transitionDirections = { [ false ] = -1, [ true ] = 1 } -- -1: Left; 1: Right
+
 -- Values
 local currentDate
 local currentDayLog
@@ -72,6 +74,134 @@ local scaleRatio = 1
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
 -- -----------------------------------------------------------------------------------
+
+local function clampValue( currentValue, minVal, maxVal )
+
+	local newValue = currentValue
+	
+	if ( currentValue > maxVal ) then
+		
+		newValue = maxVal
+	elseif ( currentValue < minVal ) then
+	
+		newValue = minVal
+		
+	end
+	
+	return newValue
+	
+end
+
+local function getNewToggleButtonPosition( button, newState )
+
+	local newHorizontalOffset = ( ( button[ "Bar" ].width / 2 + ( 2 * scaleRatio ) - button[ "Button" ].width / 2 ) * transitionDirections[ newState ] )
+
+	local selectionTransitionOffsets = {
+		
+		[ false ] = { x = button[ "Bar" ].x - math.abs( newHorizontalOffset ) },
+		[ true ] = { x = button[ "Bar" ].x },
+		
+	}
+		
+	return newHorizontalOffset, selectionTransitionOffsets
+end
+
+local function cancelToggleTransitions( button )
+
+	if ( button[ "Transition" ] ~= nil ) then
+		
+		transition.cancel( button[ "Transition" ] )
+		transition.cancel( button[ "Selection Transition" ] )
+		
+		button[ "Transition" ] = nil
+		button[ "Selection Transition" ] = nil
+		
+	end
+		
+end
+
+local function animateToggleButton( button, newState )
+	
+	if ( button[ "Debounce" ] ~= true ) then
+		
+		cancelToggleTransitions( button )
+		
+		local newHorizontalOffset, selectionTransitionOffsets = getNewToggleButtonPosition( button, newState )
+
+		button[ "Debounce" ] = true 
+		
+		-- Button Transition
+		button[ "Transition" ] = transition.to( button[ "Button" ], 
+			{ 
+				x = button[ "Bar" ].x + newHorizontalOffset, 
+				time = 100, 
+				transition = easing.linear, 
+				onComplete = function( ) 
+				
+					button[ "Debounce" ] = false
+					
+				end
+			}
+			
+		)
+		
+		-- Selection Bar Transition
+		button[ "Selection Transition" ] = transition.to( button[ "Selection" ], 
+			{ 
+				x = selectionTransitionOffsets[ newState ].x,
+				width = ( button[ "Bar" ].width * 0.45 ) + clampValue( ( button[ "Bar" ].width * 0.55 ) * transitionDirections[ newState ], 0, button[ "Bar" ].width * 0.55 ), -- Minimum Size: 45%; Maximum Size: 100% ( 0.45 + 0.55 )
+				time = 100, 
+				transition = easing.linear, 
+			}
+			
+		)
+		
+		button[ "State" ] = newState
+		
+	end
+	
+	
+end
+
+local function setToggleButtonPosition( button, newState )
+	
+	cancelToggleTransitions( button )
+
+	local newHorizontalOffset, selectionTransitionOffsets = getNewToggleButtonPosition( button, newState )
+	
+	-- Button
+	button[ "Button" ].x = button[ "Bar" ].x + newHorizontalOffset
+	
+	-- Selection Bar
+	button[ "Selection" ].x = selectionTransitionOffsets[ newState ].x
+	button[ "Selection" ].width = ( button[ "Bar" ].width * 0.45 ) + clampValue( ( button[ "Bar" ].width * 0.55 ) * transitionDirections[ newState ], 0, button[ "Bar" ].width * 0.55 )
+	
+end
+
+local function toggleButtonPress( button )
+
+	
+	if ( button[ "Debounce" ] ~= true and ui_Objects[ "NavMenu" ].isVisible == false and ui_Objects[ "Add Menu" ].isVisible == false ) then
+		
+		if ( button[ "Button" ].myName == "End Tracking" ) then
+		
+			modules[ "dayOverview" ].currentDayLog[ "Done" ] = not modules[ "dayOverview" ].currentDayLog[ "Done" ]
+			
+			if ( savedData[ "Calorie Log" ][ currentDate:fmt( "%F" ) ] == nil ) then -- Data hasn't been saved. Most likely a blank day.
+			
+				savedData[ "Calorie Log" ][ currentDate:fmt( "%F" ) ] = modules[ "dayOverview" ].currentDayLog
+				
+			end
+			
+			modules[ "storage" ].saveData( )
+			
+		end
+		
+		animateToggleButton( button, not button[ "State" ] )
+	
+	end
+	
+end
 
 local function buttonPress( event )
 
@@ -93,7 +223,10 @@ local function buttonPress( event )
 		modules[ "dayOverview" ].update( )
 		--modules[ "createMenuSections" ].createSections( ui_Groups, ui_Objects, scaleRatio, savedData[ "Calorie Log" ][ currentDate:fmt( "%F" ) ] )
 		modules[ "createMenuSections" ].createSections( ui_Groups, ui_Objects, scaleRatio, modules[ "dayOverview" ].currentDayLog )
-
+	
+		ui_Objects[ "End Tracking" ][ "State" ] = modules[ "dayOverview" ].currentDayLog[ "Done" ]
+		setToggleButtonPosition( ui_Objects[ "End Tracking" ], ui_Objects[ "End Tracking" ][ "State" ] )
+		
 	elseif ( button.myName == "leftActionButton" ) then
 		
 		if ( ui_Objects[ "Add Menu" ].isVisible == false ) then
@@ -108,9 +241,13 @@ local function buttonPress( event )
 		local isVisible = button.myName == "Close"
 		modules[ "createMenuSections" ].setScrollViewVisibility( isVisible )
 		
+		ui_Objects[ "NavMenu" ]:setMenuVisibility( false )
+		
 	end
 	
 end
+
+
 
 
 -- -----------------------------------------------------------------------------------
@@ -219,6 +356,52 @@ function scene:create( event )
 		overview[ "Nav Arrows" ][ i ].Icon:addEventListener( "tap", buttonPress )
 		
 	end
+	modules[ "dayOverview" ].update( )
+
+
+	-- Create "End Day" Toggle
+	
+	ui_Objects[ "End Tracking" ] = { }
+
+	local endToggle = ui_Objects[ "End Tracking" ]
+	endToggle[ "State" ] = modules[ "dayOverview" ].currentDayLog[ "Done" ]
+	
+	-- Button
+	endToggle[ "Button" ] = display.newCircle( ui_Groups[ 3 ], 0, 0, 25 * scaleRatio )
+	endToggle[ "Button" ]:setFillColor( 76 / 255, 175 / 255, 80 / 255 )
+
+	-- Button Stroke Properties
+	endToggle[ "Button" ]:setStrokeColor( 0, 0, 0, 0.25 )
+	endToggle[ "Button" ].strokeWidth = 2 * scaleRatio
+	
+	endToggle[ "Button" ].myName = "End Tracking"
+	endToggle[ "Button" ]:addEventListener( "tap", function( ) toggleButtonPress( endToggle ) end )
+	
+	-- Bar
+	endToggle[ "Bar" ] = display.newRoundedRect( ui_Groups[ 2 ], 0, 0, endToggle[ "Button" ].width * 2, endToggle[ "Button" ].width * 0.75, 50 * scaleRatio )
+	endToggle[ "Bar" ]:setFillColor( 199 / 255, 199 / 255, 199 / 255 )
+	endToggle[ "Bar" ]:addEventListener( "tap", function( ) toggleButtonPress( endToggle ) end )
+
+	endToggle[ "Bar" ].x, endToggle[ "Bar" ].y = display.contentCenterX, display.contentHeight - endToggle[ "Bar" ].height * 1.5
+	
+	-- Bar Selection (For Animation On Position)
+	endToggle[ "Selection" ] = display.newRoundedRect( ui_Groups[ 2 ], endToggle[ "Bar" ].x, endToggle[ "Bar" ].y, endToggle[ "Bar" ].width, endToggle[ "Bar" ].height, 50 * scaleRatio )
+	
+	endToggle[ "Selection" ]:setFillColor( 51 / 255, 138 / 255, 62 / 255 )
+
+	-- Bar Drop Shadow
+	endToggle[ "Bar Drop Shadow" ] = display.newRoundedRect( ui_Groups[ 1 ], endToggle[ "Bar" ].x + ( 2 * scaleRatio ), endToggle[ "Bar" ].y + ( 2 * scaleRatio ), endToggle[ "Bar" ].width, endToggle[ "Bar" ].height, 50 * scaleRatio )
+	endToggle[ "Bar Drop Shadow" ]:setFillColor( 0, 0, 0, 0.25 )
+	
+	endToggle[ "Button" ].x, endToggle[ "Button" ].y = ( endToggle[ "Bar" ].x + endToggle[ "Bar" ].width / 2 ) - endToggle[ "Button" ].width / 2 + ( 2 * scaleRatio ), endToggle[ "Bar" ].y
+	
+	-- Title
+	endToggle[ "Title" ] = display.newText( { parent = ui_Groups[ 3 ], text = "Done Logging", x = endToggle[ "Bar" ].x, font = "Data/Fonts/Roboto.ttf", fontSize = 32 * scaleRatio, align = "center" } )
+	endToggle[ "Title" ]:setFillColor( 0, 0, 0, 0.75 )
+	
+	endToggle[ "Title" ].y = ( endToggle[ "Bar" ].y - endToggle[ "Bar" ].height / 2 ) - endToggle[ "Title" ].height
+	
+	setToggleButtonPosition( endToggle, endToggle[ "State" ] )
 	
 end
 
