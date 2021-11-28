@@ -230,15 +230,15 @@ local function loadSection( ) -- Load Sections
 		
 		isViewMenuVisible = true
 		
-		ui_Objects[ "Selection Menu" ][ "Text Input" ].Field.text = "0"
+		ui_Objects[ "Selection Menu" ][ "Text Input" ].Field.text = "1"
 		if ( selectedItem[ "Category" ] ~= "Exercise" ) then -- Set Default Serving Size Values
 			
 			ui_Objects[ "Selection Menu" ][ "Text Input" ].Field.text = tostring( selectedItem[ "Item" ][ "Serving Size" ] )
 		
 		end
 		
-		updateViewer( )
-		
+		timer.performWithDelay( 100, updateViewer )
+
 	elseif ( sectionName == "Submit" ) then -- Add Item to Log
 		
 		local currentInput = tonumber( ui_Objects[ "Selection Menu" ][ "Text Input" ].Field.text )
@@ -530,6 +530,7 @@ function scene:create( event )
 	]]
 	
 	currentDayLog = modules[ "dayOverview" ].currentDayLog
+	currentDate = modules[ "dayOverview" ].currentDate
 	
 	-- Initialize Lists
 	itemLists[ "Food" ] = modules[ "foodRetriever" ].getFoodList( )
