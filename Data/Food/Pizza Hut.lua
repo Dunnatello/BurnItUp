@@ -5,9 +5,9 @@ PizzaHut.data = {
     { -- First Entry
 
         [ "Display Name" ] = "12 inch Medium Pan Cheese Pizza",
-        [ "Brand" ] = "PizzaHut",
+        [ "Brand" ] = "Pizza Hut",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Slice",
         [ "Serving Size Grams" ] = 91,
         [ "Servings Per Container" ] = 8,
         
@@ -29,9 +29,9 @@ PizzaHut.data = {
     { 
 
         [ "Display Name" ] = "12 inch Pepperoni Pizza",
-        [ "Brand" ] = "PizzaHut",
+        [ "Brand" ] = "Pizza Hut",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Slice",
         [ "Serving Size Grams" ] = 90,
         [ "Servings Per Container" ] = 8,
         
@@ -53,9 +53,9 @@ PizzaHut.data = {
     { 
 
         [ "Display Name" ] = "14 inch Large Pan Cheese Pizza",
-        [ "Brand" ] = "PizzaHut",
+        [ "Brand" ] = "Pizza Hut",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Slice",
         [ "Serving Size Grams" ] = 129,
         [ "Servings Per Container" ] = 8,
         
@@ -77,9 +77,9 @@ PizzaHut.data = {
     { 
 
         [ "Display Name" ] = "14 inch Large Pan Pepperoni Pizza",
-        [ "Brand" ] = "PizzaHut",
+        [ "Brand" ] = "Pizza Hut",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Slice",
         [ "Serving Size Grams" ] = 128,
         [ "Servings Per Container" ] = 1,
         
@@ -101,9 +101,9 @@ PizzaHut.data = {
     { 
 
         [ "Display Name" ] = "Chicken Alfredo Tuscani Pastas",
-        [ "Brand" ] = "PizzaHut",
+        [ "Brand" ] = "Pizza Hut",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Slice",
         [ "Serving Size Grams" ] = 282,
         [ "Servings Per Container" ] = 2,
         
@@ -125,9 +125,9 @@ PizzaHut.data = {
     { 
 
         [ "Display Name" ] = "Meaty Marinara Tuscani Pasta",
-        [ "Brand" ] = "PizzaHut",
+        [ "Brand" ] = "Pizza Hut",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Slice",
         [ "Serving Size Grams" ] = 272,
         [ "Servings Per Container" ] = 2,
         
@@ -149,9 +149,9 @@ PizzaHut.data = {
     { 
 
         [ "Display Name" ] = "HERSHEY'S Chocolate Dunkers",
-        [ "Brand" ] = "PizzaHut",
-        [ "Serving Size" ] = 2,
-        [ "Serving Type" = "Whole",
+        [ "Brand" ] = "Pizza Hut",
+        [ "Serving Size" ] = 1,
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 60,
         [ "Servings Per Container" ] = 1,
         
@@ -173,9 +173,9 @@ PizzaHut.data = {
     { 
 
         [ "Display Name" ] = "Buffalo Medium Traditional Wings",
-        [ "Brand" ] = "PizzaHut",
-        [ "Serving Size" ] = 2,
-        [ "Serving Type" = "Whole",
+        [ "Brand" ] = "Pizza Hut",
+        [ "Serving Size" ] = 1,
+        [ "Serving Type" ] = "Wing",
         [ "Serving Size Grams" ] = 59,
         [ "Servings Per Container" ] = 1,
         
@@ -197,9 +197,9 @@ PizzaHut.data = {
     { 
 
         [ "Display Name" ] = "Garlic Parmesan Traditional Wings",
-        [ "Brand" ] = "PizzaHut",
-        [ "Serving Size" ] = 2,
-        [ "Serving Type" = "Whole",
+        [ "Brand" ] = "Pizza Hut",
+        [ "Serving Size" ] = 1,
+        [ "Serving Type" ] = "Wing",
         [ "Serving Size Grams" ] = 56,
         [ "Servings Per Container" ] = 1,
         
@@ -221,9 +221,9 @@ PizzaHut.data = {
     { 
 
         [ "Display Name" ] = "Lemon Pepper Traditional Wings",
-        [ "Brand" ] = "PizzaHut",
-        [ "Serving Size" ] = 2,
-        [ "Serving Type" = "Whole",
+        [ "Brand" ] = "Pizza Hut",
+        [ "Serving Size" ] = 1,
+        [ "Serving Type" ] = "Wing",
         [ "Serving Size Grams" ] = 57,
         [ "Servings Per Container" ] = 1,
         
@@ -245,9 +245,9 @@ PizzaHut.data = {
     { 
 
         [ "Display Name" ] = "9 inch Personal Cheese Pizza",
-        [ "Brand" ] = "PizzaHut",
+        [ "Brand" ] = "Pizza Hut",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Pizza",
         [ "Serving Size Grams" ] = 381,
         [ "Servings Per Container" ] = 1,
         
@@ -269,9 +269,9 @@ PizzaHut.data = {
     { 
 
         [ "Display Name" ] = "9 inch Personal Pepperoni Pizza",
-        [ "Brand" ] = "PizzaHut",
+        [ "Brand" ] = "Pizza Hut",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Pizza",
         [ "Serving Size Grams" ] = 367,
         [ "Servings Per Container" ] = 1,
         

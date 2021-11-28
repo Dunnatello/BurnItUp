@@ -45,7 +45,7 @@ for i = 1, #moduleNames do
 end
 
 
-local function generateDefaultLog( ) -- FIXME: Remove Item Listings after creating Add Item Scene Functionality
+local function generateDefaultLog( )
 
 	local defaultLog = { 
 	
@@ -53,9 +53,6 @@ local function generateDefaultLog( ) -- FIXME: Remove Item Listings after creati
 		[ "Meals" ] = { 
 			
 			[ "Breakfast" ] = { 
-				
-				{ [ "Name" ] = "Fried Eggs", [ "Category" ] = "General", [ "Amount" ] = 3 },
-				{ [ "Name" ] = "Bacon", [ "Category" ] = "General", [ "Amount" ] = 5 },
 
 			},
 			[ "Lunch" ] = { },
@@ -64,14 +61,57 @@ local function generateDefaultLog( ) -- FIXME: Remove Item Listings after creati
 		},
 		
 		[ "Exercises" ] = { 
-		
-			{ [ "Name" ] = "Walking", [ "Category" ] = "General", [ "Amount" ] = 15, [ "Calories" ] = 60 },
 	
 		},
 		
 	}
 	
 	return defaultLog
+	
+end
+
+function dayOverview.calculateExerciseCalories( dayLog )
+
+	local exerciseCalories = 0
+	
+	-- Add Exercise Amounts
+	for i = 1, #dayOverview.currentDayLog[ "Exercises" ] do
+		
+		exerciseCalories = exerciseCalories + dayLog[ "Exercises" ][ i ][ "Calories" ]
+		
+	end
+	
+	return exerciseCalories
+	
+end
+
+function dayOverview.calculateCaloriesConsumed( dayLog, withExercise )
+
+	local caloriesConsumed = 0
+
+	-- Add Food Calories
+	for i = 1, #Meals do -- Cycle Through Food Categories
+	
+		local currentSection = dayLog[ "Meals" ][ Meals[ i ] ]
+		
+		for e = 1, #currentSection do -- Cycle Through Food Items in Section
+
+			local foodInfo = modules[ "itemHandler" ].getFoodInfo( currentSection[ e ][ "Name" ], currentSection[ e ][ "Category" ] )
+			
+			caloriesConsumed = caloriesConsumed + modules[ "itemHandler" ].getServingCalories( foodInfo, currentSection[ e ][ "Amount" ] )
+			
+		end
+		
+	end
+	
+	if ( withExercise == true ) then
+		
+		local exerciseCalories = dayOverview.calculateExerciseCalories( dayOverview.currentDayLog )
+		caloriesConsumed = caloriesConsumed - exerciseCalories
+		
+	end
+	
+	return caloriesConsumed
 	
 end
 
@@ -82,33 +122,12 @@ function dayOverview.update( )
 	overview[ "Date" ].text = dayOverview.currentDate:fmt( "%a, %b %d %Y" )
 	
 	local caloriesConsumed = 0
-	local calorieBudgetStatus = "-"
 			
 	dayOverview.currentDayLog = savedData[ "Calorie Log" ][ dayOverview.currentDate:fmt( "%F" ) ] or generateDefaultLog( )
 
 	if ( dayOverview.currentDayLog ~= nil ) then -- YYYY-MM-DD
 		
-		-- Add Food Calories
-		for i = 1, #Meals do -- Cycle Through Food Categories
-		
-			local currentSection = dayOverview.currentDayLog[ "Meals" ][ Meals[ i ] ]
-			
-			for e = 1, #currentSection do -- Cycle Through Food Items in Section
-				print( currentSection[ e ][ "Name" ] )
-				local foodInfo = modules[ "itemHandler" ].getFoodInfo( currentSection[ e ][ "Name" ], currentSection[ e ][ "Category" ] )
-				
-				caloriesConsumed = caloriesConsumed + modules[ "itemHandler" ].getServingCalories( foodInfo, currentSection[ e ][ "Amount" ] )
-				
-			end
-			
-		end
-		
-		-- Remove Exercise Amounts
-		for i = 1, #dayOverview.currentDayLog[ "Exercises" ] do
-			
-			caloriesConsumed = caloriesConsumed - dayOverview.currentDayLog[ "Exercises" ][ i ][ "Calories" ]
-			
-		end
+		caloriesConsumed = dayOverview.calculateCaloriesConsumed( dayOverview.currentDayLog, true )
 	
 	end
 	

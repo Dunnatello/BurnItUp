@@ -120,6 +120,20 @@ local function cancelToggleTransitions( button )
 		
 end
 
+local function setToggleButtonColor( button, newState )
+
+	if ( newState == false ) then
+	
+		button[ "Button" ]:setFillColor( 255 / 255, 255 / 255, 255 / 255 )
+		
+	else
+	
+		button[ "Button" ]:setFillColor( 76 / 255, 175 / 255, 80 / 255 )
+		
+	end
+	
+end
+
 local function animateToggleButton( button, newState )
 	
 	if ( button[ "Debounce" ] ~= true ) then
@@ -158,6 +172,8 @@ local function animateToggleButton( button, newState )
 		
 		button[ "State" ] = newState
 		
+		setToggleButtonColor( button, newState )
+		
 	end
 	
 	
@@ -176,6 +192,8 @@ local function setToggleButtonPosition( button, newState )
 	button[ "Selection" ].x = selectionTransitionOffsets[ newState ].x
 	button[ "Selection" ].width = ( button[ "Bar" ].width * 0.45 ) + clampValue( ( button[ "Bar" ].width * 0.55 ) * transitionDirections[ newState ], 0, button[ "Bar" ].width * 0.55 )
 	
+	setToggleButtonColor( button, newState )
+
 end
 
 local function toggleButtonPress( button )
@@ -209,23 +227,25 @@ local function buttonPress( event )
 	
 	if ( button.type == "DayNavigation" ) then
 	
-		local dayIncrement = -1
-		if ( button.myName == "chevron_right" ) then
-		
-			dayIncrement = dayIncrement * -1
+		if ( ui_Objects[ "Add Menu" ].isVisible == false and ui_Objects[ "NavMenu" ].isVisible == false ) then
 			
-		end
-		
-		print( "DAY INCREMENT: ", dayIncrement )
-		modules[ "dayOverview" ].currentDate:adddays( dayIncrement )
-		composer.setVariable( "CurrentDate", modules[ "dayOverview" ].currentDate )
+			local dayIncrement = -1
+			if ( button.myName == "chevron_right" ) then
+			
+				dayIncrement = dayIncrement * -1
+				
+			end
+			
+			modules[ "dayOverview" ].currentDate:adddays( dayIncrement )
+			composer.setVariable( "CurrentDate", modules[ "dayOverview" ].currentDate )
 
-		modules[ "dayOverview" ].update( )
-		--modules[ "createMenuSections" ].createSections( ui_Groups, ui_Objects, scaleRatio, savedData[ "Calorie Log" ][ currentDate:fmt( "%F" ) ] )
-		modules[ "createMenuSections" ].createSections( ui_Groups, ui_Objects, scaleRatio, modules[ "dayOverview" ].currentDayLog )
-	
-		ui_Objects[ "End Tracking" ][ "State" ] = modules[ "dayOverview" ].currentDayLog[ "Done" ]
-		setToggleButtonPosition( ui_Objects[ "End Tracking" ], ui_Objects[ "End Tracking" ][ "State" ] )
+			modules[ "dayOverview" ].update( )
+			modules[ "createMenuSections" ].createSections( ui_Groups, ui_Objects, scaleRatio, modules[ "dayOverview" ].currentDayLog )
+		
+			ui_Objects[ "End Tracking" ][ "State" ] = modules[ "dayOverview" ].currentDayLog[ "Done" ]
+			setToggleButtonPosition( ui_Objects[ "End Tracking" ], ui_Objects[ "End Tracking" ][ "State" ] )
+		
+		end
 		
 	elseif ( button.myName == "leftActionButton" ) then
 		

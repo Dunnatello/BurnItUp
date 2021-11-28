@@ -73,9 +73,7 @@ local sections = {
 		TextFields = { { Title = "Name", Placeholder = "John", Setting = "Name" } }, 
 		InputType = "no-emoji",
 	},
-	
-	-- FIXME: Prompt Gender Input
-	
+		
 	[ "Age" ] = { 
 		DisplayName = "Date of Birth",
 		Setting = "Date of Birth",
@@ -277,9 +275,7 @@ local function storeProfileData( newData ) -- Store Profile Data
 		textFieldData[ currentSectionInfo.TextFields[ i ].Setting ] = ui_Objects[ "Text Inputs" ][ i ].Field.text
 	
 	end
-	
-	print( "STORE: ", newProfileData[ currentSectionInfo.Setting or "Weight Goal" ] )
-	
+		
 end
 
 local function checkInput( ) -- Check User Input

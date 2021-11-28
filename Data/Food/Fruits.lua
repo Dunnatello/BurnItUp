@@ -1,13 +1,13 @@
 local fruits = { }
 
-Fruits.data = { 
+fruits.data = { 
     
     { -- First Entry
 
         [ "Display Name" ] = "Apple",
         [ "Brand" ] = "Fruit",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 182,
         [ "Servings Per Container" ] = 1,
         
@@ -32,7 +32,7 @@ Fruits.data = {
         [ "Display Name" ] = "Banana",
         [ "Brand" ] = "Fruit",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 119,
         [ "Servings Per Container" ] = 1,
         
@@ -56,7 +56,7 @@ Fruits.data = {
         [ "Display Name" ] = "Orange",
         [ "Brand" ] = "Fruit",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 96,
         [ "Servings Per Container" ] = 1,
         
@@ -80,7 +80,7 @@ Fruits.data = {
         [ "Display Name" ] = "Pear",
         [ "Brand" ] = "Fruit",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 166,
         [ "Servings Per Container" ] = 1,
         
@@ -104,7 +104,7 @@ Fruits.data = {
         [ "Display Name" ] = "Mango",
         [ "Brand" ] = "Fruit",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 336,
         [ "Servings Per Container" ] = 1,
         

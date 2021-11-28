@@ -7,7 +7,7 @@ BurgerKing.data = {
         [ "Display Name" ] = "WHOPPER",
         [ "Brand" ] = "Burger King",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Burger",
         [ "Serving Size Grams" ] = 270,
         [ "Servings Per Container" ] = 1,
         
@@ -31,7 +31,7 @@ BurgerKing.data = {
         [ "Display Name" ] = "WHOPPER with Cheese",
         [ "Brand" ] = "Burger King",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Burger",
         [ "Serving Size Grams" ] = 292,
         [ "Servings Per Container" ] = 1,
         
@@ -55,7 +55,7 @@ BurgerKing.data = {
         [ "Display Name" ] = "DOUBLE WHOPPER",
         [ "Brand" ] = "Burger King",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Burger",
         [ "Serving Size Grams" ] = 354,
         [ "Servings Per Container" ] = 1,
         
@@ -79,7 +79,7 @@ BurgerKing.data = {
         [ "Display Name" ] = "Cheeseburger",
         [ "Brand" ] = "Burger King",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Burger",
         [ "Serving Size Grams" ] = 111,
         [ "Servings Per Container" ] = 1,
         
@@ -103,7 +103,7 @@ BurgerKing.data = {
         [ "Display Name" ] = "Double Cheeseburger",
         [ "Brand" ] = "Burger King",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Burger",
         [ "Serving Size Grams" ] = 148,
         [ "Servings Per Container" ] = 1,
         
@@ -127,7 +127,7 @@ BurgerKing.data = {
         [ "Display Name" ] = "Bacon Cheeseburger",
         [ "Brand" ] = "Burger King",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Burger",
         [ "Serving Size Grams" ] = 118,
         [ "Servings Per Container" ] = 1,
         
@@ -151,7 +151,7 @@ BurgerKing.data = {
         [ "Display Name" ] = "Crispy Chicken",
         [ "Brand" ] = "Burger King",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 228,
         [ "Servings Per Container" ] = 1,
         
@@ -172,10 +172,10 @@ BurgerKing.data = {
 
     { 
 
-        [ "Display Name" ] = "BIG FISH ",
+        [ "Display Name" ] = "BIG FISH",
         [ "Brand" ] = "Burger King",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Sandwich",
         [ "Serving Size Grams" ] = 188,
         [ "Servings Per Container" ] = 1,
         
@@ -199,7 +199,7 @@ BurgerKing.data = {
         [ "Display Name" ] = "Chicken Nuggets",
         [ "Brand" ] = "Burger King",
         [ "Serving Size" ] = 10,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Container",
         [ "Serving Size Grams" ] = 146,
         [ "Servings Per Container" ] = 1,
         
@@ -223,7 +223,7 @@ BurgerKing.data = {
         [ "Display Name" ] = "Medium Fries",
         [ "Brand" ] = "Burger King",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Container",
         [ "Serving Size Grams" ] = 153,
         [ "Servings Per Container" ] = 1,
         
@@ -247,7 +247,7 @@ BurgerKing.data = {
         [ "Display Name" ] = "CROISSAN'WICH Egg & Cheese",
         [ "Brand" ] = "Burger King",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Sandwich",
         [ "Serving Size Grams" ] = 125,
         [ "Servings Per Container" ] = 1,
         
@@ -271,7 +271,7 @@ BurgerKing.data = {
         [ "Display Name" ] = "Medium Hash Browns",
         [ "Brand" ] = "Burger King",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 129,
         [ "Servings Per Container" ] = 1,
         

@@ -28,11 +28,8 @@ local dateAccess = require( "Data.Modules.External Libraries.date" )
 
 local savedData = storageAccess.getData( )
 
--- Testing a function call from metData.lua
--- metDataModule.printMetValues()
-
 --This will be needed if we take user input as hours, minutes.
-function calculator.hoursToMinutes( hours, minutes ) 
+function Calculator.hoursToMinutes( hours, minutes ) 
 
 	local minutes = 60 * hours + minutes
 	return minutes
@@ -47,13 +44,9 @@ function Calculator.calcCaloriesBurned( exercise, minutes, weightLbs )
 	
 	local roundedCalories = math.floor( ( ( ( metDataModule.getMetValue( exercise ) * 3.5 * ( weightLbs * 0.453592 )  / 200 ) * minutes ) + 0.5) )
 	
-	print( "Calories burned: " .. roundedCalories )
-
 	return roundedCalories
 	
 end
-
---Calculator.calcCaloriesBurned( "jump rope", 80, 143.3 ) -- FIXME: Remove After Testing
 
 function Calculator.calculateAge( )
 

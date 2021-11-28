@@ -78,7 +78,7 @@ local function convertStringToDate( stringText ) -- Converts provided string to 
 			
 			-- Make sure that the date is in the past.
 			if ( convertedDate == nil or currentDate <= convertedDate ) then
-				print( "Can't have a date of birth in the future" )
+				print( "Can't have a date of birth in the future." )
 				isCompatible = false
 				convertedDate = nil
 				

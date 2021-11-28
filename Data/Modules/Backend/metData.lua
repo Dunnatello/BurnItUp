@@ -21,6 +21,7 @@ Purpose: Stores a list of common exercises to be used in calculating calories bu
 
 local metData = { }
 
+
 metData.metTable = {
 	
 	[ "bicycling" ] = 7.5,   
@@ -39,8 +40,10 @@ metData.metTable = {
 	[ "curling" ] = 7.4,
 	[ "equestrianism" ] = 7.0,
 	[ "fencing" ] = 8.0,
-	[ "figure skating" ] = 8.0
+	[ "figure skating" ] = 8.0,
 }
+
+local exerciseNameList = { }
 
 function metData.getMetValue( exercise )
 
@@ -48,13 +51,23 @@ function metData.getMetValue( exercise )
 	
 end
 
-function metData.printMetValues( )
+function metData.getExercises( )
  
-	for key, value in pairs( metData.metTable ) do
+	local newList = exerciseNameList
+	
+	if ( #newList == 0 ) then -- If list hasn't been generated yet.
 		
-		print( key, value )
-		
+		for key, value in pairs( metData.metTable ) do -- Cycle through all dictionary listings.
+			
+			local newExerciseName = string.upper( string.sub( key, 1, 1 ) ) .. string.sub( key, 2, string.len( key ) ) -- Make first letter uppercase.
+
+			table.insert( newList, newExerciseName )
+			
+		end
+	
 	end
+	
+	return newList
 	
 end
 

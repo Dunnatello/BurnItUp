@@ -28,6 +28,12 @@ local food = { } -- Dictionary table of all food items
 local folderLocation = "Data.Food."
 local fileNames = { "BurgerKing", "CFA", "Chips", "Fruits", "McDonalds", "Pizza Hut", "Refreshments" } -- List of all file names within the specified folder location. Would have done a search through this directory, but it would have been lengthy and complicated.
 
+local function sortAtoZ( a, b )
+
+	return a[ "Display Name" ] < b[ "Display Name" ]
+	
+end
+
 function foodRetriever.init( ) -- Initialize List (Only runs once).
 
 	if ( isInitialized == false ) then
@@ -40,6 +46,8 @@ function foodRetriever.init( ) -- Initialize List (Only runs once).
 			
 			food[ fileNames[ i ] ] = newListModule.data
 			
+			table.sort( food[ fileNames[ i ] ], sortAtoZ )
+
 		end
 		
 		food[ "Sections" ] = fileNames

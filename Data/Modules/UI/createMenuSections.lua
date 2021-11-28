@@ -25,6 +25,7 @@ local sectionCreator = { }
 local widget = require( "widget" )
 local itemHandler = require( "Data.Modules.Backend.itemHandler" )
 local dayOverview = require( "Data.Modules.UI.dayOverview" )
+local storage = require( "Data.Modules.Backend.Storage.storageHandler" )
 
 -- Tables/Values
 local ui_Groups, ui_Objects, dayLog, scaleRatio = nil, nil, nil, 1
@@ -69,6 +70,7 @@ local function onPromptEnd( event ) -- Native Prompt Ended
 			if ( isSuccessful == true ) then
 				
 				print( "Delete Successful" )
+				storage.saveData( )
 				sectionCreator.createSections( )
 				dayOverview.update( )
 				
@@ -237,8 +239,16 @@ function sectionCreator.createSections( currentGroups, currentObjects, newScaleR
 				
 			end
 			
+			local listingName = itemInfo[ "Display Name" ]
+			
+			if ( Sections[ i ][ "Name" ] ~= "Exercises" ) then
+			
+				listingName = itemInfo[ "Brand" ] .. " | " .. listingName
+				
+			end
+			
 			-- Title (Text)
-			newListing[ "Title" ] = display.newText( { parent = ui_Groups[ 3 ], text = itemInfo[ "Display Name" ], font = "Data/Fonts/Roboto-Bold.ttf", fontSize = 28 * scaleRatio, align = "left" } )
+			newListing[ "Title" ] = display.newText( { parent = ui_Groups[ 3 ], text = listingName, font = "Data/Fonts/Roboto-Bold.ttf", fontSize = 28 * scaleRatio, align = "left" } )
 			newListing[ "Title" ]:setFillColor( 0, 0, 0 )
 			
 			newListing[ "Title" ].x = ( newSection[ "Background" ].x - newSection[ "Background" ].width / 2 ) + newListing[ "Title" ].width / 2 + ( 20 * scaleRatio )

@@ -7,7 +7,7 @@ ChickfilA.data = {
         [ "Display Name" ] = "Chicken Sandwich",
         [ "Brand" ] = "Chick-fil-A",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Sandwich",
         [ "Serving Size Grams" ] = 183,
         [ "Servings Per Container" ] = 1,
         
@@ -31,7 +31,7 @@ ChickfilA.data = {
         [ "Display Name" ] = "Deluxe Chicken Sandwich",
         [ "Brand" ] = "Chick-fil-A",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Sandwich",
         [ "Serving Size Grams" ] = 247,
         [ "Servings Per Container" ] = 1,
         
@@ -55,7 +55,7 @@ ChickfilA.data = {
         [ "Display Name" ] = "Grilled Chicken Sandwich",
         [ "Brand" ] = "Chick-fil-A",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Sandwich",
         [ "Serving Size Grams" ] = 188,
         [ "Servings Per Container" ] = 1,
         
@@ -76,10 +76,10 @@ ChickfilA.data = {
     
     { 
 
-        [ "Display Name" ] = "Nuggets",
+        [ "Display Name" ] = "Nuggets 4-count",
         [ "Brand" ] = "Chick-fil-A",
-        [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Size" ] = 4,
+        [ "Serving Type" ] = "Container",
         [ "Serving Size Grams" ] = 113,
         [ "Servings Per Container" ] = 1,
         
@@ -103,7 +103,7 @@ ChickfilA.data = {
         [ "Display Name" ] = "Cobb Salad",
         [ "Brand" ] = "Chick-fil-A",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Salad",
         [ "Serving Size Grams" ] = 413,
         [ "Servings Per Container" ] = 1,
         
@@ -127,7 +127,7 @@ ChickfilA.data = {
         [ "Display Name" ] = "Spicy Southwest Salad",
         [ "Brand" ] = "Chick-fil-A",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Salad",
         [ "Serving Size Grams" ] = 424,
         [ "Servings Per Container" ] = 1,
         
@@ -151,7 +151,7 @@ ChickfilA.data = {
         [ "Display Name" ] = "Market Salad",
         [ "Brand" ] = "Chick-fil-A",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Salad",
         [ "Serving Size Grams" ] = 321,
         [ "Servings Per Container" ] = 1,
         
@@ -175,7 +175,7 @@ ChickfilA.data = {
         [ "Display Name" ] = "Medium Potato Fries",
         [ "Brand" ] = "Chick-fil-A",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Container",
         [ "Serving Size Grams" ] = 125,
         [ "Servings Per Container" ] = 1,
         
@@ -199,7 +199,7 @@ ChickfilA.data = {
         [ "Display Name" ] = "Chicken Nuggets",
         [ "Brand" ] = "Chick-fil-A",
         [ "Serving Size" ] = 10,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Container",
         [ "Serving Size Grams" ] = 146,
         [ "Servings Per Container" ] = 1,
         
@@ -223,7 +223,7 @@ ChickfilA.data = {
         [ "Display Name" ] = "Hash Browns",
         [ "Brand" ] = "Chick-fil-A",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 77,
         [ "Servings Per Container" ] = 1,
         
@@ -247,7 +247,7 @@ ChickfilA.data = {
         [ "Display Name" ] = "Chicken Biscuit",
         [ "Brand" ] = "Chick-fil-A",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Biscuit",
         [ "Serving Size Grams" ] = 153,
         [ "Servings Per Container" ] = 1,
         
@@ -271,7 +271,7 @@ ChickfilA.data = {
         [ "Display Name" ] = "Chick-n-Strips",
         [ "Brand" ] = "Chick-fil-A",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 136,
         [ "Servings Per Container" ] = 1,
         

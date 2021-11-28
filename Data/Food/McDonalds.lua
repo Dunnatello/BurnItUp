@@ -1,13 +1,13 @@
 local McDonalds = { }
 
-McDoanlds.data = { 
+McDonalds.data = { 
     
     { -- First Entry
 
         [ "Display Name" ] = "Big Mac",
         [ "Brand" ] = "McDonalds",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 0,
         [ "Servings Per Container" ] = 1,
         
@@ -31,7 +31,7 @@ McDoanlds.data = {
         [ "Display Name" ] = "Quarter Pounder with Cheese",
         [ "Brand" ] = "McDonalds",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 0,
         [ "Servings Per Container" ] = 1,
         
@@ -55,7 +55,7 @@ McDoanlds.data = {
         [ "Display Name" ] = "McDouble",
         [ "Brand" ] = "McDonalds",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 0,
         [ "Servings Per Container" ] = 1,
         
@@ -79,7 +79,7 @@ McDoanlds.data = {
         [ "Display Name" ] = "Cheeseburger",
         [ "Brand" ] = "McDonalds",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 0,
         [ "Servings Per Container" ] = 1,
         
@@ -103,7 +103,7 @@ McDoanlds.data = {
         [ "Display Name" ] = "Double Cheeseburger",
         [ "Brand" ] = "McDonalds",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 0,
         [ "Servings Per Container" ] = 1,
         
@@ -127,7 +127,7 @@ McDoanlds.data = {
         [ "Display Name" ] = "McRib",
         [ "Brand" ] = "McDonalds",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 0,
         [ "Servings Per Container" ] = 1,
         
@@ -151,7 +151,7 @@ McDoanlds.data = {
         [ "Display Name" ] = "Crispy Chicken",
         [ "Brand" ] = "McDonalds",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 0,
         [ "Servings Per Container" ] = 1,
         
@@ -175,7 +175,7 @@ McDoanlds.data = {
         [ "Display Name" ] = "Filet-O-Fish",
         [ "Brand" ] = "McDonalds",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 0,
         [ "Servings Per Container" ] = 1,
         
@@ -199,7 +199,7 @@ McDoanlds.data = {
         [ "Display Name" ] = "McNuggets",
         [ "Brand" ] = "McDonalds",
         [ "Serving Size" ] = 10,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 0,
         [ "Servings Per Container" ] = 1,
         
@@ -223,7 +223,7 @@ McDoanlds.data = {
         [ "Display Name" ] = "Medium Fries",
         [ "Brand" ] = "McDonalds",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 0,
         [ "Servings Per Container" ] = 1,
         
@@ -247,7 +247,7 @@ McDoanlds.data = {
         [ "Display Name" ] = "Egg McMuffin",
         [ "Brand" ] = "McDonalds",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 0,
         [ "Servings Per Container" ] = 1,
         
@@ -271,7 +271,7 @@ McDoanlds.data = {
         [ "Display Name" ] = "Hash Browns",
         [ "Brand" ] = "McDonalds",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Grams" ] = 0,
         [ "Servings Per Container" ] = 1,
         

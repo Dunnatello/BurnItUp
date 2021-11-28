@@ -130,10 +130,7 @@ end
 
 local function settingButtonPress( event )
 
-
 	local button = event.target
-	
-	print( button.myName[ "Name" ] )
 	
 	if ( button.myName[ "Name" ] == "Delete Save" ) then
 	

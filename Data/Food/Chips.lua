@@ -1,13 +1,13 @@
 local chips = { }
 
-Chips.data = { 
+chips.data = { 
     
     { -- First Entry
 
         [ "Display Name" ] = "Classic Potato",
         [ "Brand" ] = "LAY'S",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Bag",
         [ "Serving Size Grams" ] = 28,
         [ "Servings Per Container" ] = 1, --grams
         
@@ -31,7 +31,7 @@ Chips.data = {
         [ "Display Name" ] = "BBQ Flavored Potato",
         [ "Brand" ] = "LAY'S",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Bag",
         [ "Serving Size Grams" ] = 28,
         [ "Servings Per Container" ] = 1, --grams
         
@@ -55,7 +55,7 @@ Chips.data = {
         [ "Display Name" ] = "FLAMIN' HOT",
         [ "Brand" ] = "CHEETOS",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Bag",
         [ "Serving Size Grams" ] = 28,
         [ "Servings Per Container" ] = 1, --grams
         
@@ -79,7 +79,7 @@ Chips.data = {
         [ "Display Name" ] = "Crunchy Cheese",
         [ "Brand" ] = "CHEETOS",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Bag",
         [ "Serving Size Grams" ] = 28,
         [ "Servings Per Container" ] = 1, --grams
         
@@ -103,7 +103,7 @@ Chips.data = {
         [ "Display Name" ] = "Potato",
         [ "Brand" ] = "RUFFLES",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Bag",
         [ "Serving Size Grams" ] = 28,
         [ "Servings Per Container" ] = 1, --grams
         
@@ -127,7 +127,7 @@ Chips.data = {
         [ "Display Name" ] = "Cheddar & Sour Cream",
         [ "Brand" ] = "RUFFLES",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Bag",
         [ "Serving Size Grams" ] = 28,
         [ "Servings Per Container" ] = 1, --grams
         
@@ -151,7 +151,7 @@ Chips.data = {
         [ "Display Name" ] = "Original",
         [ "Brand" ] = "SUNCHIPS",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Bag",
         [ "Serving Size Grams" ] = 28,
         [ "Servings Per Container" ] = 1, --grams
         
@@ -175,7 +175,7 @@ Chips.data = {
         [ "Display Name" ] = "French Onion",
         [ "Brand" ] = "SUNCHIPS",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Bag",
         [ "Serving Size Grams" ] = 28,
         [ "Servings Per Container" ] = 1, --grams
         
@@ -199,7 +199,7 @@ Chips.data = {
         [ "Display Name" ] = "Original",
         [ "Brand" ] = "Pringles",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Bag",
         [ "Serving Size Grams" ] = 28,
         [ "Servings Per Container" ] = 6, --grams
         
@@ -223,7 +223,7 @@ Chips.data = {
         [ "Display Name" ] = "Sour Cream & Onion",
         [ "Brand" ] = "Pringles",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Bag",
         [ "Serving Size Grams" ] = 28,
         [ "Servings Per Container" ] = 6, --grams
         

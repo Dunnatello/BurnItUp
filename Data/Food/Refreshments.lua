@@ -7,7 +7,7 @@ drinks.data = {
         [ "Display Name" ] = "Coke",
         [ "Brand" ] = "Coca-Cola",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Can",
         [ "Serving Size Ounces" ] = 20,
         [ "Servings Per Container" ] = 1,
         
@@ -31,7 +31,7 @@ drinks.data = {
         [ "Display Name" ] = "Coke Caffeine-Free",
         [ "Brand" ] = "Coca-Cola",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Can",
         [ "Serving Size Ounces" ] = 12,
         [ "Servings Per Container" ] = 1,
         
@@ -55,7 +55,7 @@ drinks.data = {
         [ "Display Name" ] = "Pepsi",
         [ "Brand" ] = "Pepsi",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Can",
         [ "Serving Size Ounces" ] = 12,
         [ "Servings Per Container" ] = 1,
         
@@ -80,7 +80,7 @@ drinks.data = {
         [ "Display Name" ] = "Pepsi Zero Sugar",
         [ "Brand" ] = "Pepsi",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Can",
         [ "Serving Size Ounces" ] = 12,
         [ "Servings Per Container" ] = 1,
         
@@ -105,7 +105,7 @@ drinks.data = {
         [ "Display Name" ] = "Sprite Lemon-Lime",
         [ "Brand" ] = "Sprite",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Can",
         [ "Serving Size Ounces" ] = 12,
         [ "Servings Per Container" ] = 1,
         
@@ -130,7 +130,7 @@ drinks.data = {
         [ "Display Name" ] = "Diet Mountain Dew",
         [ "Brand" ] = "MTN Dew",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Can",
         [ "Serving Size Ounces" ] = 12,
         [ "Servings Per Container" ] = 1,
         
@@ -154,7 +154,7 @@ drinks.data = {
         [ "Display Name" ] = "Dr. Pepper Classic",
         [ "Brand" ] = "Dr Pepper",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Can",
         [ "Serving Size Ounces" ] = 20,
         [ "Servings Per Container" ] = 1,
         
@@ -178,7 +178,7 @@ drinks.data = {
         [ "Display Name" ] = "Fanta Orange",
         [ "Brand" ] = "Fanta",
         [ "Serving Size" ] = 1,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Can",
         [ "Serving Size Ounces" ] = 12,
         [ "Servings Per Container" ] = 1,
         
@@ -203,13 +203,13 @@ drinks.data = {
         [ "Display Name" ] = "Milk",
         [ "Brand" ] = "Cow",
         [ "Serving Size" ] = 0,
-        [ "Serving Type" = "Whole",
+        [ "Serving Type" ] = "Whole",
         [ "Serving Size Ounces" ] = 12,
         [ "Servings Per Container" ] = 1,
         
         [ "Calories" ] = 204,
         [ "Total Fat" ] = 11, -- Grams
-        [ "Saturated Fat" ] = = 6, -- Grams
+        [ "Saturated Fat" ] = 6, -- Grams
         [ "Trans Fat" ] = 0, -- Grams
         
         [ "Cholesterol" ] = 34, -- Milligrams

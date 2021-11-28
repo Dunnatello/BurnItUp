@@ -59,12 +59,13 @@ function addMenu:buttonPress( button )
 			
 			sceneParameters = { }
 			newSceneName = "Data.Scenes.TrackWeight"
-			
-
+		
+		
 		end
 		
 		self:setMenuVisibility( false )
-
+		
+		composer.removeScene( newSceneName )
 		composer.gotoScene( newSceneName, { effect = "crossFade", time = 300, params = sceneParameters } )
 		
 	end
@@ -157,7 +158,6 @@ function addMenu:createMenu( sceneData )  -- Create Add Menu for Scene
 		local gridListingSize = addMenu[ "Background" ].width / ( buttonsPerRow + 1 )
 		for e = 1, #buttonCategories do
 			
-			print( buttonCategories[ e ][ "Category" ] )
 			local buttonNames = buttonCategories[ e ][ "Buttons" ]
 			
 			local newCategoryName = display.newText( { parent = ui_Groups[ 6 ], text = buttonCategories[ e ][ "Category" ], x = ( addMenu[ "Background" ].x - addMenu[ "Background" ].width / 2 ) + gridListingSize, font = "Data/Fonts/Roboto-Bold.ttf", fontSize = gridListingSize * 0.25 } )
@@ -166,7 +166,6 @@ function addMenu:createMenu( sceneData )  -- Create Add Menu for Scene
 			
 			for i = 1, #buttonNames do
 			
-				print( buttonNames[ i ][ "Title" ] )
 				local newButton = { }
 				
 				local newListingPosition = { 
@@ -195,7 +194,7 @@ function addMenu:createMenu( sceneData )  -- Create Add Menu for Scene
 				
 				newButton[ "Button" ].myName = buttonNames[ i ][ "Title" ]
 				newButton[ "Button" ].buttonType = "Category"
-				newButton[ "Button" ].categoryName = buttonCategories[ e ][ "Section" ]
+				newButton[ "Button" ].categoryName = buttonNames[ i ][ "Section" ]
 				
 				newButton[ "Button" ]:addEventListener( "tap", function( ) self:buttonPress( newButton[ "Button" ] ) end )
 				-- Button Title
@@ -230,7 +229,7 @@ function addMenu:createMenu( sceneData )  -- Create Add Menu for Scene
 	end
 	
 	-- Hide Menu
-	self:setMenuVisibility( false ) -- FIXME: Return value to false after testing.
+	self:setMenuVisibility( false )
 		
 end
 
