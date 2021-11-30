@@ -42,7 +42,7 @@ metData.metTable = {
 	[ "volleyball" ] = 4.0,
 	[ "calisthenics" ] = 4.5,
 	[ "typing" ] = 1.3,
-	[ "marching band" ] = 4.0
+	[ "marching band" ] = 4.0,
 	[ "table tennis" ] = 4.0
 }
 
