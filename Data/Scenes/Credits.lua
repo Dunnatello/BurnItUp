@@ -94,7 +94,7 @@ local teamMembers = {
 	
 		[ "Name" ] = "Jonathan Nguyen",
 		[ "Roles" ] = { "Tester/Quality Assurance" },
-		[ "Description" ] = "",
+		[ "Description" ] = "Pursuing a degree in Computer Science in order to work for the government.",
 		
 	},
 	
@@ -147,7 +147,7 @@ local function createCreditList( ) -- Create list of credits within the ScrollVi
 		newIcon[ "Guide" ]:setFillColor( 0, 0, 0, 0.6 )
 		
 		newIcon[ "Icon" ] = display.newImageRect( ui_Groups[ 3 ], "Data/Assets/Group Photos/" .. teamMembers[ i ][ "Name" ] .. ".png", 384 * scaleRatio, 384 * scaleRatio )
-		newIcon[ "Icon" ]:translate( display.contentCenterX, ( newIcon[ "Guide" ].y + newIcon[ "Guide" ].height / 2 ) + ( newIcon[ "Icon" ].height / 2 + 30 * scaleRatio ) )
+		newIcon[ "Icon" ]:translate( ui_Objects[ "Content View" ].width / 2, ( newIcon[ "Guide" ].y + newIcon[ "Guide" ].height / 2 ) + ( newIcon[ "Icon" ].height / 2 + 30 * scaleRatio ) )
 
 		newIcon[ "Title" ] = display.newText( { parent = ui_Groups[ 3 ], text = teamMembers[ i ][ "Name" ], x = ui_Objects[ "Content View" ].width / 2, font = "Data/Fonts/Roboto-Bold.ttf", fontSize = ( 65 * scaleRatio ), align = "center" } )
 		newIcon[ "Title" ].y = ( newIcon[ "Icon" ].y + newIcon[ "Icon" ].height / 2 ) + newIcon[ "Title" ].height / 2 + ( 10 * scaleRatio )
@@ -167,6 +167,15 @@ local function createCreditList( ) -- Create list of credits within the ScrollVi
 		lastPosition = newIcon[ "Profile" ].y + newIcon[ "Profile" ].height / 2
 		
 	end
+
+	local newGuideText = display.newText( { parent = ui_Groups[ 3 ], text = "End of Credits", x = ui_Objects[ "Content View" ].width / 2, font = "Data/Fonts/Roboto.ttf", fontSize = ( 32 * scaleRatio ), align = "center" } )
+	newGuideText:setFillColor( 0, 0, 0, 0.6 )
+	
+	newGuideText.height = newGuideText.height * 3
+	
+	newGuideText.y = lastPosition + newGuideText.height / 2
+	
+	ui_Objects[ "Content View" ]:insert( newGuideText )
 	
 end
 
