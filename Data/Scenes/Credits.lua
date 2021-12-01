@@ -67,7 +67,7 @@ local teamMembers = {
 	
 		[ "Name" ] = "Timothy Bennett",
 		[ "Roles" ] = { "Backend Developer", "Technical Scribe/Documentation Editor" },
-		[ "Description" ] = "",
+		[ "Description" ] = "Dedicated Computer Science student interested in game development and AI.",
 		
 	},
 	
@@ -85,7 +85,7 @@ local teamMembers = {
 	
 		[ "Name" ] = "Talha Khan",
 		[ "Roles" ] = { "Data Entry" },
-		[ "Description" ] = "",
+		[ "Description" ] = "Cybersecurity student that is passionate about making the online world a safer place.",
 		
 	},
 
