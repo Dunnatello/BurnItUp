@@ -34,13 +34,16 @@ metData.metTable = {
 	[ "bowling" ] = 3.0,
 	[ "boxing" ] = 13.4,
 	[ "basketball" ] = 11.1,
-	[ "car driving" ] = 2.0,
-	[ "cricket" ] = 6.1,
-	[ "croquet" ] = 2.5,
-	[ "curling" ] = 7.4,
-	[ "equestrianism" ] = 7.0,
-	[ "fencing" ] = 8.0,
-	[ "figure skating" ] = 8.0,
+	[ "yoga" ] = 2.5,
+	[ "dancing" ] = 6.5,
+	[ "badminton" ] = 6.0,
+	[ "golf" ] = 4.8,
+	[ "rock climbing" ] = 5.8,
+	[ "volleyball" ] = 4.0,
+	[ "calisthenics" ] = 4.5,
+	[ "typing" ] = 1.3,
+	[ "marching band" ] = 4.0,
+	[ "table tennis" ] = 4.0
 }
 
 local exerciseNameList = { }
