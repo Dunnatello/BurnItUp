@@ -58,8 +58,8 @@ local teamMembers = {
 	
 		[ "Name" ] = "Chase Balmes",
 		[ "Roles" ] = { "Backend Developer" },
-		[ "Description" ] = "",
-		
+		[ "Description" ] = "Computer science student interested in the intersection of healthcare and cybersecurity.  ",
+
 	},
 	
 	-- Timothy Bennett
