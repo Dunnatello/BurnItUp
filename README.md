@@ -31,7 +31,7 @@ The application, <i>Burn it Up!</i>, features a Material Design 1.0 interface wi
 This project taught us how to work on software development collaboratively and use version control software such as GitHub. We also learned how to calculate calories burned from various workouts based on MET data. Furthermore, we learned how to distribute tasks in order to meet our deadlines.<br><br>Originally, we intended to include a large dataset of food items from a public database, but the file size for the dataset exceeded 100 MB, so we only included a few items for testing. Additional food data can be included to add more user options or an online database could be connected to the application with some additional work.
 
 ### Final Words
-After completing this project, we gained knowledge on how to use GitHub version control and learned the processes of software development collaboration. Additionally, we completed development on the application by achieving all of the goals that we planned.
+During the project's development, we learned the importance of using version control tools such as GitHub and experienced the benefits of collaborating on software development projects. Most importantly, we completed development on the application by achieving all of the goals that we planned.
 
 ## Team Members
 | Team Member  | GitHub Profile  | Roles |
@@ -44,7 +44,7 @@ After completing this project, we gained knowledge on how to use GitHub version 
 
 
 ## Solar2D Information
-Developed in Solar2D for Android devices. Tested using Solar2D Simulator 2022.3673.
+Developed using Solar2D for Android devices. Tested using Solar2D Simulator 2022.3673. You can find the latest version of Solar2D [here](https://www.solar2d.com).  
 Builds provided are using debug keystores that will expire earliest on November 9th 2031. 
 
 ## Credits
