@@ -34,13 +34,13 @@ This project taught us how to work on software development collaboratively and u
 During the project's development, we learned the importance of using version control tools such as GitHub and experienced the benefits of collaborating on software development projects. Most importantly, we completed development on the application by achieving all of the goals that we planned.
 
 ## Team Members
-| Team Member  | GitHub Profile  | Roles |
-| ------------- | ------------- | ------------- |
-| Chase Balmes | <p align="center"><img src="https://avatars.githubusercontent.com/u/79763150" width="40"></img><br>[@chasebalmes](https://github.com/chasebalmes)</p> | Backend Developer |
-| Timothy Bennett | <p align="center"><img src="https://avatars.githubusercontent.com/u/84809371" width="40"></img><br>[@DifferentFusion](https://github.com/DifferentFusion)</p> | Backend Developer, Technical Scribe/Documentation Editor |
-| Michael Dunn | <p align="center"><img src="https://avatars.githubusercontent.com/u/11823777" width="40"></img><br>[@Dunnatello](https://www.github.com/Dunnatello)</p> | Project Lead, UI/UX Designer, UI Developer, Database Storage, Backend Developer |
-| Talha Khan | <p align="center"><img src="https://avatars.githubusercontent.com/u/90275404" width="40"></img><br>[@NotTK](https://www.github.com/NotTK)</p> | Data Entry |
-| Jonathan Nguyen | <p align="center"><img src="https://avatars.githubusercontent.com/u/89655762" width="40"></img><br>[@Jnguyen183](https://github.com/Jnguyen183)</p> | Tester/Quality Assurance |
+| Team Member | Roles |
+| ------------- | ------------- |
+| <p align="center"><img src="https://avatars.githubusercontent.com/u/79763150" width="40"></img><br>[@chasebalmes](https://github.com/chasebalmes)</p> | Backend Developer |
+| <p align="center"><img src="https://avatars.githubusercontent.com/u/84809371" width="40"></img><br>[@DifferentFusion](https://github.com/DifferentFusion)</p> | Backend Developer, Technical Scribe/Documentation Editor |
+| <p align="center"><img src="https://avatars.githubusercontent.com/u/11823777" width="40"></img><br>[@Dunnatello](https://www.github.com/Dunnatello)</p> | Project Lead, UI/UX Designer, UI Developer, Database Storage, Backend Developer |
+| <p align="center"><img src="https://avatars.githubusercontent.com/u/90275404" width="40"></img><br>[@NotTK](https://www.github.com/NotTK)</p> | Data Entry |
+| <p align="center"><img src="https://avatars.githubusercontent.com/u/89655762" width="40"></img><br>[@Jnguyen183](https://github.com/Jnguyen183)</p> | Tester/Quality Assurance |
 
 
 ## Solar2D Information
