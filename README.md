@@ -1,3 +1,5 @@
+<p align="center"><img src="https://github.com/Dunnatello/BurnItUp/blob/main/GitHub%20Readme%20Photos/BurnItUp%20Graph.png" /> </p>
+
 # Burn it Up!
 ## Team Shark Bait
 
